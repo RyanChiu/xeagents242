@@ -59,8 +59,15 @@ echo $scripts_for_layout;
 		<!-- End Border -->
 		<!-- Start Footer -->
 		<div id="footer">
-			<font size="2" color="white"><b>Copyright &copy; 2012 xueseros All
+			<div style="float:left;">
+				<font size="1" color="white">
+				<b>XuesEros, RPG Companies INC 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
+				</font>
+			</div>
+			<div style="float:right;">
+			<font size="1" color="white"><b>Copyright &copy; 2012 xueseros All
 					Rights Reserved.&nbsp;&nbsp;</b> </font>
+			</div>
 		</div>
 		<!-- End Footer -->
 	</div>
