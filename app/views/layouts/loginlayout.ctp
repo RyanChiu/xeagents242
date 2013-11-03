@@ -30,15 +30,10 @@ echo $scripts_for_layout;
 			<div class="header">
 				<div style="float: left; padding: 0px 0px 0px 6px;">
 					<p>&nbsp;</p>
-					<a href="http://www.myspace.com/paydirtau/radio">
-					<?php echo $html->image('k10387380.jpg', array('style' => 'height:90px; border: 0px;')); ?>
-					</a>
+					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:90px; border: 0px;')); ?>
 				</div>
 				<div style="float: right; padding: 0px 0px 0px 0px;">
-					<font
-						style="font-size: 48.0pt; font-weight: bold; color: #006633">www</font><font
-						style="font-size: 72.0pt; font-weight: bold; color: #006633">.PayDirtDollars.</font><font
-						style="font-size: 48.0pt; font-weight: bold; color: #006633">com</font>
+					
 				</div>
 			</div>
 			<!-- End Header -->
