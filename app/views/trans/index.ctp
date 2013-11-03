@@ -123,11 +123,10 @@ if (!empty($notes)) {
 <!-- show the top selling list -->
 <br/>
 <table style="width:100%">
-<caption><font size="5" color="#bb2222">Best sellers this week.</font></caption>
 <tr>
 	<td width="50%">
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">All times</caption>
+		<caption style="font-style:italic;color:#d3a006;">Top 10 All times best sellers</caption>
 		<thead>
 		<tr>
 			<th>Rank</th>
@@ -179,8 +178,8 @@ if (!empty($notes)) {
 		?>
 		</div>
 		<table style="width:100%" style="font-size:90%;">
-		<caption style="font-style:italic;">
-		This Week (From <?php echo $weekstart; ?> To <?php echo $weekend; ?>)		
+		<caption style="font-style:italic;color:#d3a006;">
+		Top 10 Best sellers, this week		
 		</caption>
 		<thead>
 		<tr>
