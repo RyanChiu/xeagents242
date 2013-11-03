@@ -7,48 +7,32 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 ?>
 <table style="border: 0; width: 100%">
 	<tr>
-		<td rowspan="10" width="195px">
-			<?php
-			//echo $html->image('loginLeft.png', array('width' => '180px'));
-			?>
-		</td>
-		<td colspan="2" align="center">
-		</td>
-		<td rowspan="10" width="185px" style="vertical-align: top;">
-			<div style="float: right; text-align: right; display: none;">
-				<?php echo $html->link("Register for account", "/../pddreg/MerchantRegistration.htm"); ?>
-				<br/>
-				<?php echo $html->link("Contact us", array("controller" => "trans", "action" => "contactus")); ?>
-			</div>
-			<?php
-			//echo $html->image('loginRight.png', array('width' => '120px'));
-			?>
-		</td>
-	</tr>
-	<tr>
-		<td align="right"><b><font color="white" size="2">Username :</font> </b>
-		</td>
-		<td align="left">
-			<?php
-			echo $form->input('Account.username', array('label' => '', 'style' => 'width:112px;'));
-			?> 
-			<script type="text/javascript">
-			jQuery("#AccountUsername").focus();
-			</script>
-		</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
 		<td></td>
+		<td style="color:darkred;text-align:left;font-weight:bold;">
+			<div style="margin-bottom:6px;">Affliate's log in</div>
+		</td>
 	</tr>
 	<tr>
 		<td align="right">
-			<b><font color="white" size="2">Password :</font></b>
+			<b><font color="white" size="2">Username/Password :</font> </b>
 		</td>
 		<td align="left">
+			<div style="float:left;">
 			<?php
-			echo $form->input('Account.password', array('label' => '', 'style' => 'width:112px; margin-top: 8px;', 'type' => 'password'));
+			echo $form->input('Account.username', array('label' => '', 'style' => 'width:112px;'));
+			?> 
+			</div>
+			<div style="float:left;color:white;padding:0 3px 0 3px;">
+			/
+			</div>
+			<div style="float:left;">
+			<?php
+			echo $form->input('Account.password', array('label' => '', 'style' => 'width:112px;', 'type' => 'password'));
 			?>
+			</div>
+			<script type="text/javascript">
+			jQuery("#AccountUsername").focus();
+			</script>
 		</td>
 	</tr>
 	<tr>
@@ -112,23 +96,27 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		<td style="color: #dddddd;">Example: 9x4=36, please enter 36.</td>
 	</tr>
 	<tr>
-		<td colspan="2" align="center">
-		<br/>
+		<td></td>
+		<td>
+		<div style="float:left;">
 		<?php
-		echo $form->submit('login-button.png', array('style' => 'border:0px;width:160px;height:45px;'));
+		echo $form->submit('login-button.png', array('style' => 'border:0px;width:128px;height:36px;'));
 		?>
+		</div>
+		<div style="float:left;margin-left:12px;padding-top:9px;">
+		<?php
+		echo $html->link(
+				'<b><font size="1">(Lost password?)</font></b>',
+				array('controller' => 'trans', 'action' => 'forgotpwd'),
+				null, false, false
+		);
+		?>
+		</div>
 		</td>
 	</tr>
 	<tr>
-		<td align="center" colspan="2"><br /> 
-			<?php
-			echo $html->link(
-					'<b><font size="2">Lost password?</font></b>',
-					array('controller' => 'trans', 'action' => 'forgotpwd'),
-					null, false, false
-			);
-			?>
-			<br /> <br /> <font color="#ccba4c">We must have your email on our account.</font>
+		<td align="center" colspan="2">
+			
 		</td>
 	</tr>
 </table>
