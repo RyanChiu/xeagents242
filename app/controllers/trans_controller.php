@@ -721,7 +721,7 @@ class TransController extends AppController {
 				$this->data['FakeContactUs']['subject'],
 				"From:" . $this->data['FakeContactUs']['email'] . "\n\n" . $this->data['FakeContactUs']['message'],
 				"admin@PayDirtDollars.com",
-				"support@PayDirtDollars.com",
+				"CSsuppertforchatters@xueseros.com",
 				$this->data['FakeContactUs']['email']
 			);
 			$redirecturl = '';
@@ -1917,8 +1917,7 @@ class TransController extends AppController {
 				if ($this->__sendemail(
 						$subject, $content,
 						'admin@PayDirtDollars.com',
-						//'qa@cleanchattersinc.com'
-						'admin@PayDirtDollars.com'
+						'CSsuppertforchatters@xueseros.com'
 					) != true) {
 					$fmsg = '(Failed to email out.<1>)';
 				};
