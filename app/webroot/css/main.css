@@ -329,8 +329,8 @@ a:hover {
 }
 /*for search label*/
 .search-label {
-	background: /*#E6EDF5*/ #d3a006;
-	color: /*#4F76A3*/ black;
+	background: /*#E6EDF5*/ #006633;
+	color: /*#4F76A3*/ white;
 	font-size: 100% !important;
 	font-weight: bold;
 }
