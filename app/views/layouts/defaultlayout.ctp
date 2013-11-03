@@ -608,7 +608,7 @@ echo $scripts_for_layout;
 		<!-- End Border -->
 		<!-- Start Footer -->
 		<div id="footer">
-			<font size="2" color="white"><b>Copyright &copy; 2010 PayDirtDollars All
+			<font size="2" color="white"><b>Copyright &copy; 2012 xueseros All
 				Rights Reserved.&nbsp;&nbsp;</b> </font>
 		</div>
 		<!-- End Footer -->
