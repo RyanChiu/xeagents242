@@ -100,10 +100,10 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		<td>
 		<div style="float:left;">
 		<?php
-		echo $form->submit('login-button.png', array('style' => 'border:0px;width:128px;height:36px;'));
+		echo $form->submit('login-button.png', array('style' => 'border:0px;width:160px;height:45px;'));
 		?>
 		</div>
-		<div style="float:left;margin-left:12px;padding-top:9px;">
+		<div style="float:left;margin-left:12px;padding-top:15px;">
 		<?php
 		echo $html->link(
 				'<b><font size="1">(Lost password?)</font></b>',
