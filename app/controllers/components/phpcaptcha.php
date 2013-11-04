@@ -10,7 +10,7 @@ class PhpcaptchaComponent extends Object {
 	function show() {
 		$options = array(
 			'text_color' => new Securimage_Color('#e80707'),
-			'captcha_type' => 1,
+			'captcha_type' => 0,
 			'noise_level' => 2
 		);
 		$phpcaptcha = new Securimage($options);

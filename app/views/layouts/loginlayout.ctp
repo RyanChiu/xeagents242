@@ -28,7 +28,7 @@ echo $scripts_for_layout;
 					<p>&nbsp;</p>
 					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
-				<div id="divLogin" style="float:right;padding:0;width:50%;height:100%;">
+				<div id="divLogin" style="float:right;padding:0;width:265px;height:100%;text-align:right;padding:0;margin:0;">
 					<?php echo $content_for_layout; ?>
 				</div>
 			</div>
