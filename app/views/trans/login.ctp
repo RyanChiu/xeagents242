@@ -35,7 +35,7 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		</td>
 	</tr>
 	<tr>
-		<td>&nbsp;</td>
+		<td><div style="font-size:6px;">&nbsp;</div></td>
 	</tr>
 	<tr>
 		<td>
