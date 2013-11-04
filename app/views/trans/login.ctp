@@ -13,21 +13,23 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		</td>
 	</tr>
 	<tr>
-		<td align="right">
-			<b><font color="white" size="2">Username/Password :</font> </b>
+		<td>
 		</td>
 		<td align="left">
+			<div style="float:left;color:white;padding:0 3px 0 3px;">
+				<b>User:</b>
+			</div>
 			<div style="float:left;">
 			<?php
-			echo $form->input('Account.username', array('label' => '', 'style' => 'width:112px;'));
+			echo $form->input('Account.username', array('label' => '', 'style' => 'width:60px;'));
 			?> 
 			</div>
 			<div style="float:left;color:white;padding:0 3px 0 3px;">
-			/
+				<b>Pass:</b>
 			</div>
 			<div style="float:left;">
 			<?php
-			echo $form->input('Account.password', array('label' => '', 'style' => 'width:112px;', 'type' => 'password'));
+			echo $form->input('Account.password', array('label' => '', 'style' => 'width:60px;', 'type' => 'password'));
 			?>
 			</div>
 			<script type="text/javascript">
@@ -40,17 +42,19 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		<td></td>
 	</tr>
 	<tr>
-		<td align="right">
-			<b><font color="white" size="2">Code verification :</font></b>
+		<td>
 		</td>
 		<td align="left">
+			<div style="float:left;color:white;padding:0 3px 0 3px;">
+				<b>Code:</b>
+			</div>
 			<div style="float: left; margin-right: 10px;">
 				<?php
 				echo $form->input(
 					'Account.vcode', 
 					array(
 						'label' => '', 
-						'style' => 'width:112px;', 
+						'style' => 'width:60px;', 
 						'div' => array('style' => 'margin-top:8px;')
 					)
 				);
@@ -66,12 +70,12 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 				</script>
 				<?php
 				echo $html->link(
-						$html->image(array('controller' => 'trans', 'action' => 'phpcaptcha'),
-								array('style' => 'width:100px; height:35; border: 1px solid #222222;', 'id' => 'imgVcodes', 'onclick' => 'javascript:__chgVcodes();')
-						),
-						'#',
-						array('title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)'),
-						false, false
+					$html->image(array('controller' => 'trans', 'action' => 'phpcaptcha'),
+						array('style' => 'width:80px; height:22; border: 1px solid #222222;', 'id' => 'imgVcodes', 'onclick' => 'javascript:__chgVcodes();')
+					),
+					'#',
+					array('title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)'),
+					false, false
 				);
 				?>
 			</div>
