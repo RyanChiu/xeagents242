@@ -11,10 +11,6 @@ echo $html->css('main');
 /*for jQuery*/
 echo $javascript->link('jQuery/Datepicker/jquery-1.3.2.min');
 
-/*for cufon*/
-echo $javascript->link('cufon/cufon-yui');
-echo $javascript->link('cufon/Chiller_400.font');
-
 echo $scripts_for_layout;
 
 ?>
@@ -28,11 +24,11 @@ echo $scripts_for_layout;
 		<div id="border">
 			<!-- Start Header -->
 			<div class="header">
-				<div style="float: left; padding: 0px 0px 0px 6px;">
+				<div style="float:left;padding:0;">
 					<p>&nbsp;</p>
 					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
-				<div style="float: right; padding: 0px 0px 0px 0px;">
+				<div id="divLogin" style="float:right;padding:0;width:50%;height:100%;">
 					
 				</div>
 			</div>
@@ -76,7 +72,5 @@ echo $scripts_for_layout;
 		<font color="#f7df80" style="BACKGROUND-COLOR:#000000"><strong>XE -Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="#ff0000" face="Arial Black">**</font>&nbsp; Link-2=$1.95 Trial <font color="#ff0000" face="Arial Black">**</font> Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
 	</div>
 	
-	<!-- To avoid delays, initialize Cufón before other scripts at the bottom -->
-	<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
