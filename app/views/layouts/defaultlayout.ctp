@@ -70,7 +70,7 @@ echo $scripts_for_layout;
 			<div class="header">
 				<div style="float: left; padding: 0px 0px 0px 6px;">
 					<p>&nbsp;</p>
-					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:90px; border: 0px;')); ?>
+					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
 				<div style="float: right; padding: 0px 0px 0px 0px;">
 					
