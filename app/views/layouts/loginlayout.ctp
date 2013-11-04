@@ -42,7 +42,21 @@ echo $scripts_for_layout;
 					</center>
 					<div class="content-top"></div>
 					<div class="content-mid">
-
+						<div style="float:left;">
+							<font color="darkred">XuesEros RGP Companies INC.</font><br/><br/>
+							<font color="white">TO Get your Office account Contact us:</font><br/><br/>
+							<font color="darkred">Affiliate Manager: Riva Chau	vin</font><br/>
+							<font color="white">Email: RivaCha@xueseros.com</font><br/>
+							<font color="white">Skype: RPGRivaCha</font><br/>
+							<font color="white">YM: RPGRivaCHA@Yahoo.com</font><br/><br/>
+							<font color="darkred">Executive Program Manager: Jana A. Miller</font><br/>
+							<font color="white">Email: JanaMila@xueseros.com</font><br/><br/>
+							<font color="darkred">Affiliate Support</font><br/>
+							<font color="darkred">SCsupportforChatters@XuesEros.com</font><br/>
+						</div>
+						<div style="float:right;">
+							<?php echo $html->image('main/RIGHTBEE.jpg', array('style' => 'height:245px;border:0px;')); ?>
+						</div>
 					</div>
 					<div class="content-bottom"></div>
 				</div>
