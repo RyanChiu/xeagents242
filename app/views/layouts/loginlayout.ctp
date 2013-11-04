@@ -29,7 +29,7 @@ echo $scripts_for_layout;
 					<?php echo $html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
 				<div id="divLogin" style="float:right;padding:0;width:50%;height:100%;">
-					
+					<?php echo $content_for_layout; ?>
 				</div>
 			</div>
 			<!-- End Header -->
@@ -42,8 +42,6 @@ echo $scripts_for_layout;
 					</center>
 					<div class="content-top"></div>
 					<div class="content-mid">
-
-						<?php echo $content_for_layout; ?>
 
 					</div>
 					<div class="content-bottom"></div>
