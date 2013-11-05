@@ -108,7 +108,7 @@ img.float {
 	height: 125px
 } /* IE Min-Height Hack */
 #rightcolumn {
-	border-top: 1px solid #5c5c5c;
+	border-top: 1px solid #3c3c3c;
 	border-bottom: 1px solid #5c5c5c;
 	margin: 0px 0px 0px 0px;
 	display: inline; /* IE Hack */

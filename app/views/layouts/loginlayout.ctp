@@ -42,7 +42,7 @@ echo $scripts_for_layout;
 					</center>
 					<div class="content-top"></div>
 					<div class="content-mid">
-						<div style="float:left;">
+						<div style="float:left;width:45%;text-align:right;">
 							<font color="darkred">XuesEros RGP Companies INC.</font><br/><br/>
 							<font color="white">TO Get your Office account Contact us:</font><br/><br/>
 							<font color="darkred">Affiliate Manager: Riva Chau	vin</font><br/>
@@ -54,7 +54,7 @@ echo $scripts_for_layout;
 							<font color="darkred">Affiliate Support</font><br/>
 							<font color="darkred">SCsupportforChatters@XuesEros.com</font><br/>
 						</div>
-						<div style="float:right;">
+						<div style="float:right;width:45%;">
 							<?php echo $html->image('main/RIGHTBEE.jpg', array('style' => 'height:245px;border:0px;')); ?>
 						</div>
 					</div>
@@ -74,7 +74,7 @@ echo $scripts_for_layout;
 			</div>
 			<div style="float:right;">
 			<font size="1" color="white"><b>Copyright &copy; 2012 xueseros All
-					Rights Reserved.&nbsp;&nbsp;</b> </font>
+				Rights Reserved.&nbsp;&nbsp;</b> </font>
 			</div>
 		</div>
 		<!-- End Footer -->
