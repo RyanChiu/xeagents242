@@ -13,20 +13,24 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 	</tr>
 	<tr>
 		<td align="left">
-			<div style="float:left;color:white;padding:0 3px 0 3px;">
-				<b>User:</b>
+			<div style="float:left;color:white;width:85px;text-align:left;">
+				<b>Username:</b>
 			</div>
 			<div style="float:left;">
 			<?php
-			echo $form->input('Account.username', array('label' => '', 'style' => 'width:65px;'));
+			echo $form->input('Account.username', array('label' => '', 'style' => 'width:135px;'));
 			?> 
 			</div>
-			<div style="float:left;color:white;padding:0 3px 0 3px;">
-				<b>Pass:</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div style="float:left;color:white;white;width:85px;text-align:left;">
+				<b>Password:</b>
 			</div>
 			<div style="float:left;">
 			<?php
-			echo $form->input('Account.password', array('label' => '', 'style' => 'width:65px;', 'type' => 'password'));
+			echo $form->input('Account.password', array('label' => '', 'style' => 'width:135px;', 'type' => 'password'));
 			?>
 			</div>
 			<script type="text/javascript">
@@ -35,25 +39,26 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 		</td>
 	</tr>
 	<tr>
-		<td><div style="font-size:6px;">&nbsp;</div></td>
-	</tr>
-	<tr>
 		<td>
-			<div style="float:left;color:white;padding:10px 3px 0 3px;">
+			<div style="float:left;color:white;white;width:85px;text-align:left;">
 				<b>Code:</b>
 			</div>
-			<div style="float:left; margin-right:10px;">
+			<div style="float:left;">
 				<?php
 				echo $form->input(
 					'Account.vcode', 
 					array(
 						'label' => '', 
-						'style' => 'width:65px;', 
-						'div' => array('style' => 'margin-top:8px;')
+						'style' => 'width:135px;'
 					)
 				);
 				?>
 			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div style="float:left;color:white;white;width:85px;text-align:left;">&nbsp;</div>
 			<div style="float:left;">
 				<script type="text/javascript">
 				function __chgVcodes() {
@@ -65,7 +70,7 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 				<?php
 				echo $html->link(
 					$html->image(array('controller' => 'trans', 'action' => 'phpcaptcha'),
-						array('style' => 'width:100px;border:1px solid #222222;', 'id' => 'imgVcodes', 'onclick' => 'javascript:__chgVcodes();')
+						array('style' => 'width:135px;height:28px;border:1px solid #222222;', 'id' => 'imgVcodes', 'onclick' => 'javascript:__chgVcodes();')
 					),
 					'#',
 					array('title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)'),
@@ -77,20 +82,20 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 	</tr>
 	<tr>
 		<td>
-		<div style="float:left;">
-		<?php
-		echo $form->submit('login-button.png', array('style' => 'border:0px;width:160px;height:45px;'));
-		?>
-		</div>
-		<div style="float:left;margin-left:12px;padding-top:15px;">
-		<?php
-		echo $html->link(
-				'<b><font size="1">(Lost pwd?)</font></b>',
+			<div style="float:left;width:85px;text-align:left;margin-left:0px;padding-top:5px;">
+			<?php
+			echo $html->link(
+				'<b><font size="1">(Forget pwd?)</font></b>',
 				array('controller' => 'trans', 'action' => 'forgotpwd'),
 				null, false, false
-		);
-		?>
-		</div>
+			);
+			?>
+			</div>
+			<div style="float:left;width:135px;height:25px;">
+			<?php
+			echo $form->submit('Login', array('style' => 'width:80px;'));
+			?>
+			</div>
 		</td>
 	</tr>
 </table>
