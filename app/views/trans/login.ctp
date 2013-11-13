@@ -61,7 +61,7 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 			</div>
 			<div style="float:left;width:135px;height:25px;">
 			<?php
-			echo $form->submit('Login', array('style' => 'width:80px;'));
+			echo $form->submit('LET ME IN', array('style' => 'width:80px;'));
 			?>
 			</div>
 		</td>
