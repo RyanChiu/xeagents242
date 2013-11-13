@@ -8,7 +8,7 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 <table style="float:right;border:0;width:260px;margin-top:25px;">
 	<tr>
 		<td style="color:#fed652;text-align:center;font-weight:bold;font-size:16px;">
-			<div style="margin-bottom:6px;">Log in</div>
+			<div style="margin:18px 0px 6px 0px;">Log in</div>
 		</td>
 	</tr>
 	<tr>
@@ -40,44 +40,12 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 	</tr>
 	<tr>
 		<td>
-			<div style="float:left;color:white;white;width:85px;text-align:left;">
-				<b>Code:</b>
-			</div>
-			<div style="float:left;">
-				<?php
-				echo $form->input(
-					'Account.vcode', 
-					array(
-						'label' => '', 
-						'style' => 'width:135px;'
-					)
-				);
-				?>
-			</div>
+			
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<div style="float:left;color:white;white;width:85px;text-align:left;">&nbsp;</div>
-			<div style="float:left;">
-				<script type="text/javascript">
-				function __chgVcodes() {
-					document.getElementById("imgVcodes").src =
-						"<?php echo $html->url(array('controller' => 'trans', 'action' => 'phpcaptcha')); ?>"
-						+ "?" + Math.random();
-				}
-				</script>
-				<?php
-				echo $html->link(
-					$html->image(array('controller' => 'trans', 'action' => 'phpcaptcha'),
-						array('style' => 'width:135px;height:28px;border:1px solid #222222;', 'id' => 'imgVcodes', 'onclick' => 'javascript:__chgVcodes();')
-					),
-					'#',
-					array('title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)'),
-					false, false
-				);
-				?>
-			</div>
+			
 		</td>
 	</tr>
 	<tr>
