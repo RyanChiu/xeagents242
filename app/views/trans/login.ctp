@@ -53,9 +53,9 @@ echo $form->create(null, array('controller' => 'trans', 'action' => 'login'));
 			<div style="float:left;width:85px;text-align:left;margin-left:0px;padding-top:5px;">
 			<?php
 			echo $html->link(
-				'<b><font size="1">(Forget pwd?)</font></b>',
+				'(Forget pwd?)',
 				array('controller' => 'trans', 'action' => 'forgotpwd'),
-				null, false, false
+				array('style' => 'font-size:11px;font-weight:bold;'), false
 			);
 			?>
 			</div>
