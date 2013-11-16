@@ -81,12 +81,11 @@ function __checkAll() {
 
 <div style="margin-bottom:3px">
 <?php
-echo $form->button('Add Office',
-	array(
-		'onclick' => 'javascript:location.href="'
-			. $html->url(array('controller' => 'trans', 'action' => 'regcompany')) . '"',
-		'style' => 'width:160px;'
-	)
+echo $html->link(
+	'Add Office',
+	array('controller' => 'trans', 'action' => 'regcompany'),
+	array(),
+	false
 );
 ?>
 </div>

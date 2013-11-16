@@ -171,12 +171,11 @@ function __checkAll() {
 <?php
 if (in_array($userinfo['role'], array(0, 1))) {//means an administrator or an office
 	//echo $form->button($userinfo['role'] == 0 ? 'Add Agent' : 'Request New Agent',
-	echo $form->button('Add Agent',
-		array(
-			'onclick' => 'javascript:location.href="' .
-				$html->url(array('controller' => 'trans', 'action' => 'regagent')) . '"',
-			'style' => 'width:160px;'
-		)
+	echo $html->link(
+		'Add Agent',
+		array('controller' => 'trans', 'action' => 'regagent'),
+		array(),
+		false
 	);
 }
 ?>
