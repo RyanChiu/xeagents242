@@ -94,8 +94,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>HOME</font></span>',
-								array('controller' => 'trans', 'action' => 'index'),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'index'),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -114,9 +116,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>NEWS</font></span>',
-								array('controller' => 'trans', 'action' => 'addnews'),
-								array('rel' => 'dropmenu_admin_news'),
-								false, false);
+							array('controller' => 'trans', 'action' => 'addnews'),
+							array(
+								'rel' => 'dropmenu_admin_news',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -136,9 +142,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>OFFICE</font></span>',
-								array('controller' => 'trans', 'action' => 'lstcompanies', 'id' => -1),
-								array('rel' => 'dropmenu_admin_company'),
-								false, false);
+							array('controller' => 'trans', 'action' => 'lstcompanies', 'id' => -1),
+							array(
+								'rel' => 'dropmenu_admin_company',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -157,9 +167,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>AGENT</font></span>',
-								array('controller' => 'trans', 'action' => 'lstagents', 'id' => -1),
-								array('rel' => 'dropmenu_admin_agent'),
-								false, false);
+							array('controller' => 'trans', 'action' => 'lstagents', 'id' => -1),
+							array(
+								'rel' => 'dropmenu_admin_agent',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -180,9 +194,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>AGENT</font></span>',
-								array('controller' => 'trans', 'action' => 'lstagents', 'id' => $userinfo['id']),
-								array('rel' => 'dropmenu_com_agent'),
-								false, false);
+							array('controller' => 'trans', 'action' => 'lstagents', 'id' => $userinfo['id']),
+							array(
+								'rel' => 'dropmenu_com_agent',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -200,8 +218,12 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>NEW MEMBERS</font></span>',
-								array('controller' => 'trans', 'action' => 'lstnewmembers'),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'lstnewmembers'),
+							array(
+								'escape' => false
+							), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -222,9 +244,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>LINKS</font></span>',
-								array('controller' => 'links', 'action' => 'lstlinks'),
-								array('rel' => ($role == 0 ? 'dropmenu_links' : '')),
-								false, false);
+							array('controller' => 'links', 'action' => 'lstlinks'),
+							array(
+								'rel' => ($role == 0 ? 'dropmenu_links' : ''),
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -256,8 +282,9 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>STATS</font></span>',
-								array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
-								null, false, false
+							array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
+							array('escape' => false), 
+							false
 						);
 						?>
 						</li>
@@ -280,9 +307,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>LOGS</font></span>',
-								"#",
-								array('rel' => 'dropmenu_logs'),
-								false, false);
+							"#",
+							array(
+								'rel' => 'dropmenu_logs',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -301,8 +332,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>GET HELP</font></span>',
-								array('controller' => 'trans', 'action' => 'contactus'),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'contactus'),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -320,8 +353,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>PROFILE</font></span>',
-								array('controller' => 'trans', 'action' => 'updadmin'),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'updadmin'),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -339,8 +374,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>PROFILE</font></span>',
-								array('controller' => 'trans', 'action' => 'updcompany', 'id' => $userinfo['id']),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'updcompany', 'id' => $userinfo['id']),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -358,8 +395,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>PROFILE</font></span>',
-								array('controller' => 'trans', 'action' => 'updagent', 'id' => $userinfo['id']),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'updagent', 'id' => $userinfo['id']),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 						<?php
@@ -377,9 +416,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php 
 						echo $html->link('<span><font>HOW TO SELL</font></span>',
-								"#",
-								array('rel' => 'dropmenu_toolbox_admin'),
-								false, false);
+							"#",
+							array(
+								'rel' => 'dropmenu_toolbox_admin',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php 
@@ -394,9 +437,13 @@ echo $scripts_for_layout;
 						<li>
 						<?php 
 						echo $html->link('<span><font>HOW TO SELL</font></span>',
-								"#",
-								array('rel' => 'dropmenu_toolbox_normal'),
-								false, false);
+							"#",
+							array(
+								'rel' => 'dropmenu_toolbox_normal',
+								'escape' => false
+							),
+							false
+						);
 						?>
 						</li>
 						<?php 
@@ -405,8 +452,10 @@ echo $scripts_for_layout;
 						<li>
 						<?php
 						echo $html->link('<span><font>LOGOUT</font></span>',
-								array('controller' => 'trans', 'action' => 'logout'),
-								null, false, false);
+							array('controller' => 'trans', 'action' => 'logout'),
+							array('escape' => false), 
+							false
+						);
 						?>
 						</li>
 					</ul>
@@ -419,16 +468,18 @@ echo $scripts_for_layout;
 					style="width: 70px;">
 					<?php
 					echo $html->link('<font><b>Alerts</b></font>',
-							array('controller' => 'trans', 'action' => 'updalerts'),
-							null, false, false
+						array('controller' => 'trans', 'action' => 'updalerts'),
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
 				<div id="dropmenu_links" class="dropmenudiv_e" style="width: 120px;">
 					<?php
 					echo $html->link('<font><b>Link</b></font>',
-							array('controller' => 'links', 'action' => 'lstlinks'),
-							null, false, false
+						array('controller' => 'links', 'action' => 'lstlinks'),
+						array('escape' => false), 
+						false
 					);
 					/**
 					 * HARD CODE:
@@ -436,8 +487,9 @@ echo $scripts_for_layout;
 					 */
 					if (in_array($userinfo['id'], array(1, 2))) {
 						echo $html->link('<font><b>Config Site</b></font>',
-								array('controller' => 'links', 'action' => 'lstsites'),
-								null, false, false
+							array('controller' => 'links', 'action' => 'lstsites'),
+							array('escape' => false), 
+							false
 						);
 					}
 					?>
@@ -446,8 +498,9 @@ echo $scripts_for_layout;
 					style="width: 130px;">
 					<?php
 					echo $html->link('<font><b>Manage Agent</b></font>',
-							array('controller' => 'trans', 'action' => 'lstagents', 'id' => -1),
-							null, false, false
+						array('controller' => 'trans', 'action' => 'lstagents', 'id' => -1),
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
@@ -455,8 +508,9 @@ echo $scripts_for_layout;
 					style="width: 135px;">
 					<?php
 					echo $html->link('<font><b>Manage Office</b></font>',
-							array('controller' => 'trans', 'action' => 'lstcompanies', 'id' => -1),
-							null, false, false
+						array('controller' => 'trans', 'action' => 'lstcompanies', 'id' => -1),
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
@@ -465,11 +519,13 @@ echo $scripts_for_layout;
 					<?php
 					echo $html->link('<font><b>Update XE-Cams</b></font>',
 						array('controller' => 'trans', 'action' => 'updtoolbox', 'site' => 7),
-						null, false, false
+						array('escape' => false), 
+						false
 					);
 					echo $html->link('<font><b>Update LC-Dating</b></font>',
 						array('controller' => 'trans', 'action' => 'updtoolbox', 'site' => 2),
-						null, false, false
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
@@ -484,8 +540,9 @@ echo $scripts_for_layout;
 					style="width: 130px;">
 					<?php
 					echo $html->link('<font><b>Manage Agent</b></font>',
-							array('controller' => 'trans', 'action' => 'lstagents', 'id' => $userinfo['id']),
-							null, false, false
+						array('controller' => 'trans', 'action' => 'lstagents', 'id' => $userinfo['id']),
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
@@ -507,11 +564,13 @@ echo $scripts_for_layout;
 					<?php
 					echo $html->link('<font><b>XE-Cams Selling Tools</b></font>',
 						array('controller' => 'trans', 'action' => 'toolbox', 'site' => 7),
-						null, false, false
+						array('escape' => false), 
+						false
 					);
 					echo $html->link('<font><b>LC-Dating</b></font>',
 						array('controller' => 'trans', 'action' => 'toolbox', 'site' => 2),
-						null, false, false
+						array('escape' => false), 
+						false
 					);
 					?>
 				</div>
@@ -529,22 +588,26 @@ echo $scripts_for_layout;
 					<?php
 					if ($role == 2) {
 						echo $html->link('<font><b>Submit Chat Log</b></font>',
-								array('controller' => 'trans', 'action' => 'addchatlogs'),
-								null, false, false
+							array('controller' => 'trans', 'action' => 'addchatlogs'),
+							array('escape' => false), 
+							false
 						);
 					}
 					echo $html->link('<font><b>Chat Log</b></font>',
-							array('controller' => 'trans', 'action' => 'lstchatlogs', 'id' => -1),
-							null, false, false
+						array('controller' => 'trans', 'action' => 'lstchatlogs', 'id' => -1),
+						array('escape' => false), 
+						false
 					);
 					echo $html->link('<font><b>Click Log</b></font>',
-							array('controller' => 'links', 'action' => 'lstclickouts', 'id' => -1),
-							null, false, false
+						array('controller' => 'links', 'action' => 'lstclickouts', 'id' => -1),
+						array('escape' => false), 
+						false
 					);
 					if ($role != 2) {
 						echo $html->link('<font><b>Login Log</b></font>',
-								array('controller' => 'trans', 'action' => 'lstlogins', 'id' => -1),
-								null, false, false
+							array('controller' => 'trans', 'action' => 'lstlogins', 'id' => -1),
+							array('escape' => false), 
+							false
 						);
 					}
 					?>
@@ -699,10 +762,13 @@ echo $scripts_for_layout;
 
 			<p style="text-align: center; margin: 9px 0px 0px 9px;">
 				<?php
-				echo $html->link('<font style="font-weight:bold;">Enter</font>',
+				echo $html->link('Enter',
 						array('controller' => 'trans', 'action' => 'pass'),
-						array('onclick' => 'javascript:jQuery.fancybox.close();',),
-						false, false
+						array(
+							'onclick' => 'javascript:jQuery.fancybox.close();',
+							'style' => 'font-weight:bold;'
+						),
+						false
 				);
 				?>
 			</p>

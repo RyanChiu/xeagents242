@@ -144,8 +144,11 @@ foreach ($rs as $r):
 	echo $html->link(
 		$r['ViewCompany']['agenttotal'] . '&nbsp;' . $html->image('iconList.gif', array('border' => 0)),
 		array('controller' => 'trans', 'action' => 'lstagents', 'id' => $r['ViewCompany']['companyid']),
-		array('title' => 'Click to the agents.'),
-		false, false
+		array(
+			'title' => 'Click to the agents.',
+			'escape' => false
+		),
+		false
 	);
 	?>
 	</td>
@@ -158,20 +161,29 @@ foreach ($rs as $r):
 	echo $html->link(
 		$html->image('iconEdit.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'updcompany', 'id' => $r['ViewCompany']['companyid']),
-		array('title' => 'Click to edit this record.'),
-		false, false
+		array(
+			'title' => 'Click to edit this record.',
+			'escape' => false
+		),
+		false
 	);
 	echo $html->link(
 		$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['ViewCompany']['companyid'], 'status' => 1, 'from' => 0),
-		array('title' => 'Click to activate the user.'),
-		false, false
+		array(
+			'title' => 'Click to activate the user.',
+			'escape' => false
+		),
+		false
 	);
 	echo $html->link(
 		$html->image('iconSuspend.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['ViewCompany']['companyid'], 'status' => 0, 'from' => 0),
-		array('title' => 'Click to suspend the user.'),
-		"Are you sure?", false
+		array(
+			'title' => 'Click to suspend the user.',
+			'escape' => false
+		),
+		"Are you sure?"
 	);
 	?>
 	</td>
@@ -189,8 +201,12 @@ endforeach;
 echo $html->link(
 	$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;&nbsp;',
 	array('controller' => 'trans', 'action' => 'activatem'),
-	array('id' => 'linkActivateSelected', 'title' => 'Click to activate the selected users.'),
-	false, false
+	array(
+		'id' => 'linkActivateSelected', 
+		'title' => 'Click to activate the selected users.',
+		'escape' => false
+	),
+	false
 );
 echo $html->link(
 	'',
@@ -201,8 +217,12 @@ echo $html->link(
 echo $html->link(
 	$html->image('iconSuspend.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;&nbsp;',
 	array('controller' => 'trans', 'action' => 'activatem'),
-	array('id' => 'linkSuspendSelected', 'title' => 'Click to suspend the selected users.'),
-	"Are you sure?", false
+	array(
+		'id' => 'linkSuspendSelected', 
+		'title' => 'Click to suspend the selected users.',
+		'escape' => false
+	),
+	"Are you sure?"
 );
 echo $html->link(
 	'',
@@ -246,7 +266,7 @@ echo $html->link(
 			'Inform',
 			array('controller' => 'trans', 'action' => 'informem'),
 			array('id' => 'linkInform'),
-			false, false
+			false
 		);
 		?>
 	</td></tr>

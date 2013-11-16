@@ -208,8 +208,11 @@ if (in_array($userinfo['role'], array(0, 1))) {//means an administrator or an of
 	echo $html->link(
 		$html->image('viewit.png', array('border' => 0)),
 		array('controller' => 'trans', 'action' => 'lstchatlogs'),
-		array('title' => 'Click to all the chat logs.'),
-		false, false
+		array(
+			'title' => 'Click to all the chat logs.',
+			'escape' => false
+		),
+		false
 	);
 	?>
 	</th>
@@ -249,7 +252,11 @@ foreach ($rs as $r):
 		echo $html->link(
 			$r['ViewAgent']['logintimes'] . '&nbsp;' . $html->image('iconList.gif', array('border' => 0)),
 			array('controller' => 'trans', 'action' => 'lstlogins', 'id' => $r['ViewAgent']['id']),
-			array('title' => 'Click to the login logs'), false, false
+			array(
+				'title' => 'Click to the login logs',
+				'escape' => false
+			), 
+			false
 		);
 	}
 	?>
@@ -260,7 +267,11 @@ foreach ($rs as $r):
 	echo $html->link(
 		$r['ViewAgent']['campaigns'] . '&nbsp;' . $html->image('iconList.gif', array('border' => 0)),
 		array('controller' => 'links', 'action' => 'lstcampaigns', 'id' => $r['ViewAgent']['id']),
-		array('title' => 'Click to the campaigns.'), false, false
+		array(
+			'title' => 'Click to the campaigns.',
+			'escape' => false
+		), 
+		false
 	);
 	?>
 	</td>
@@ -269,20 +280,29 @@ foreach ($rs as $r):
 	echo $html->link(
 		$html->image('iconEdit.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'updagent', 'id' => $r['ViewAgent']['id']),
-		array('title' => 'Click to edit this record.'),
-		false, false
+		array(
+			'title' => 'Click to edit this record.',
+			'escape' => false
+		),
+		false
 	);
 	echo $html->link(
 		$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['ViewAgent']['id'], 'status' => 1, 'from' => 1),
-		array('title' => 'Click to activate the user.'),
-		false, false
+		array(
+			'title' => 'Click to activate the user.',
+			'escape' => false
+		),
+		false
 	);
 	echo $html->link( 
 		$html->image('iconSuspend.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
 		array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['ViewAgent']['id'], 'status' => 0, 'from' => 1),
-		array('title' => 'Click to suspend the user.'),
-		"Are you sure?", false
+		array(
+			'title' => 'Click to suspend the user.',
+			'escape' => false
+		),
+		"Are you sure?"
 	);
 	?>
 	</td>
@@ -291,8 +311,11 @@ foreach ($rs as $r):
 	echo $html->link(
 		$html->image('chatlogs.png', array('border' => 0)),
 		array('controller' => 'trans', 'action' => 'lstchatlogs', 'id' => $r['ViewAgent']['id']),
-		array('title' => 'Click to the chat logs.'),
-		false, false
+		array(
+			'title' => 'Click to the chat logs.',
+			'escape' => false
+		),
+		false
 	);
 	?>
 	</td>
@@ -310,8 +333,12 @@ endforeach;
 echo $html->link(
 	$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;&nbsp;',
 	array('controller' => 'trans', 'action' => 'activatem'),
-	array('id' => 'linkActivateSelected', 'title' => 'Click to activate the selected users.'),
-	false, false
+	array(
+		'id' => 'linkActivateSelected', 
+		'title' => 'Click to activate the selected users.',
+		'escape' => false
+	),
+	false
 );
 echo $html->link(
 	'',
@@ -322,8 +349,12 @@ echo $html->link(
 echo $html->link(
 	$html->image('iconSuspend.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;&nbsp;',
 	array('controller' => 'trans', 'action' => 'activatem'),
-	array('id' => 'linkSuspendSelected', 'title' => 'Click to suspend the selected users.'),
-	"Are you sure?", false
+	array(
+		'id' => 'linkSuspendSelected', 
+		'title' => 'Click to suspend the selected users.',
+		'escape' => false
+	),
+	"Are you sure?"
 );
 echo $html->link(
 	'',
@@ -367,7 +398,7 @@ echo $html->link(
 			'Inform',
 			array('controller' => 'trans', 'action' => 'informem'),
 			array('id' => 'linkInform'),
-			false, false
+			false
 		);
 		?>
 	</td></tr>

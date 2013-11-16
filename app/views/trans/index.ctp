@@ -12,9 +12,8 @@ if ($userinfo['role'] == 0) {
 			array('border' => 0, 'width' => 25, 'height' => 25, 'alt' => 'Archive this bulletin.')
 		),// . */'<font size="1">(Archive)</font>',
 		array('controller' => 'trans', 'action' => 'index', 'id' => -1),
-		null,
-		'Are you sure you wish to archive this bulletin?',
-		false
+		array('escape' => false),
+		'Are you sure you wish to archive this bulletin?'
 	);
 }
 ?>
@@ -170,8 +169,7 @@ if (!empty($notes)) {
 		if ($userinfo['role'] == 0) {
 			echo $html->link('<font size="1">Choose another pay period</font>',
 				array('controller' => 'trans', 'action' => 'top10'),
-				array(),
-				null,
+				array('escape' => false),
 				false
 			);
 		}

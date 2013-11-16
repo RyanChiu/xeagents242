@@ -71,10 +71,13 @@ foreach ($rs as $r):
 	<td align="center">
 	<?php
 	echo $html->link(
-			$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
-			array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['Account']['id'], 'status' => 1, 'from' => 2),
-			array('title' => 'Click to approve the account.'),
-			false, false
+		$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
+		array('controller' => 'trans', 'action' => 'activatem', 'ids' => $r['Account']['id'], 'status' => 1, 'from' => 2),
+		array(
+			'title' => 'Click to approve the account.',
+			'escape' => false
+		),
+		false
 	);
 	?>
 	</td>
@@ -92,8 +95,12 @@ endforeach;
 echo $html->link(
 	$html->image('iconActivate.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;&nbsp;',
 	array('controller' => 'trans', 'action' => 'activatem'),
-	array('id' => 'linkActivateSelected', 'title' => 'Click to approve the selected accounts.'),
-	false, false
+	array(
+		'id' => 'linkActivateSelected', 
+		'title' => 'Click to approve the selected accounts.',
+		'escape' => false
+	),
+	false
 );
 echo $html->link(
 	'',

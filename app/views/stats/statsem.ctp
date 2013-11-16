@@ -320,8 +320,11 @@ if (!empty($rs)) {
 				. $html->link(
 					$html->image('iconEdit.png', array('style' => 'width:16px;height:16px;border:0px;')),
 					"#",
-					array('id' => $extID),
-					false, false
+					array(
+						'id' => $extID,
+						'escape' => false
+					),
+					false
 				)
 				. '</div>';
 			echo $ajax->editor($divID,
