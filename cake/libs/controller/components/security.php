@@ -1,33 +1,38 @@
 <?php
+/* SVN FILE: $Id$ */
 /**
- * Security Component
+ * Short description for file.
+ *
+ * Long description for file
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (http://www.cakephp.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @filesource
+ * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package       cake
  * @subpackage    cake.cake.libs.controller.components
  * @since         CakePHP(tm) v 0.10.8.2156
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-App::import('Core', array('String', 'Security'));
-
 /**
- * SecurityComponent
+ * Short description for file.
+ *
+ * Long description for file
  *
  * @package       cake
  * @subpackage    cake.cake.libs.controller.components
- * @link http://book.cakephp.org/view/1296/Security-Component
  */
 class SecurityComponent extends Object {
-
 /**
  * The controller method that will be called if this request is black-hole'd
  *
@@ -35,7 +40,6 @@ class SecurityComponent extends Object {
  * @access public
  */
 	var $blackHoleCallback = null;
-
 /**
  * List of controller actions for which a POST request is required
  *
@@ -44,7 +48,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requirePost()
  */
 	var $requirePost = array();
-
 /**
  * List of controller actions for which a GET request is required
  *
@@ -53,7 +56,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireGet()
  */
 	var $requireGet = array();
-
 /**
  * List of controller actions for which a PUT request is required
  *
@@ -62,7 +64,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requirePut()
  */
 	var $requirePut = array();
-
 /**
  * List of controller actions for which a DELETE request is required
  *
@@ -71,7 +72,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireDelete()
  */
 	var $requireDelete = array();
-
 /**
  * List of actions that require an SSL-secured connection
  *
@@ -80,7 +80,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireSecure()
  */
 	var $requireSecure = array();
-
 /**
  * List of actions that require a valid authentication key
  *
@@ -89,7 +88,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireAuth()
  */
 	var $requireAuth = array();
-
 /**
  * List of actions that require an HTTP-authenticated login (basic or digest)
  *
@@ -98,7 +96,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireLogin()
  */
 	var $requireLogin = array();
-
 /**
  * Login options for SecurityComponent::requireLogin()
  *
@@ -107,16 +104,15 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireLogin()
  */
 	var $loginOptions = array('type' => '', 'prompt' => null);
-
 /**
  * An associative array of usernames/passwords used for HTTP-authenticated logins.
+ * If using digest authentication, passwords should be MD5-hashed.
  *
  * @var array
  * @access public
  * @see SecurityComponent::requireLogin()
  */
 	var $loginUsers = array();
-
 /**
  * Controllers from which actions of the current controller are allowed to receive
  * requests.
@@ -126,7 +122,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireAuth()
  */
 	var $allowedControllers = array();
-
 /**
  * Actions from which actions of the current controller are allowed to receive
  * requests.
@@ -136,7 +131,6 @@ class SecurityComponent extends Object {
  * @see SecurityComponent::requireAuth()
  */
 	var $allowedActions = array();
-
 /**
  * Form fields to disable
  *
@@ -144,7 +138,6 @@ class SecurityComponent extends Object {
  * @access public
  */
 	var $disabledFields = array();
-
 /**
  * Whether to validate POST data.  Set to false to disable for data coming from 3rd party
  * services, etc.
@@ -153,7 +146,6 @@ class SecurityComponent extends Object {
  * @access public
  */
 	var $validatePost = true;
-
 /**
  * Other components used by the Security component
  *
@@ -161,31 +153,16 @@ class SecurityComponent extends Object {
  * @access public
  */
 	var $components = array('RequestHandler', 'Session');
-
 /**
  * Holds the current action of the controller
  *
  * @var string
  */
 	var $_action = null;
-
-/**
- * Initialize the SecurityComponent
- *
- * @param object $controller Controller instance for the request
- * @param array $settings Settings to set to the component
- * @return void
- * @access public
- */
-	function initialize(&$controller, $settings = array()) {
-		$this->_set($settings);
-	}
-
 /**
  * Component startup. All security checking happens here.
  *
  * @param object $controller Instantiating controller
- * @return void
  * @access public
  */
 	function startup(&$controller) {
@@ -210,19 +187,16 @@ class SecurityComponent extends Object {
 		}
 		$this->_generateToken($controller);
 	}
-
 /**
  * Sets the actions that require a POST request, or empty for all actions
  *
  * @return void
  * @access public
- * @link http://book.cakephp.org/view/1299/requirePost
  */
 	function requirePost() {
 		$args = func_get_args();
 		$this->_requireMethod('Post', $args);
 	}
-
 /**
  * Sets the actions that require a GET request, or empty for all actions
  *
@@ -233,7 +207,6 @@ class SecurityComponent extends Object {
 		$args = func_get_args();
 		$this->_requireMethod('Get', $args);
 	}
-
 /**
  * Sets the actions that require a PUT request, or empty for all actions
  *
@@ -244,7 +217,6 @@ class SecurityComponent extends Object {
 		$args = func_get_args();
 		$this->_requireMethod('Put', $args);
 	}
-
 /**
  * Sets the actions that require a DELETE request, or empty for all actions
  *
@@ -255,37 +227,31 @@ class SecurityComponent extends Object {
 		$args = func_get_args();
 		$this->_requireMethod('Delete', $args);
 	}
-
 /**
  * Sets the actions that require a request that is SSL-secured, or empty for all actions
  *
  * @return void
  * @access public
- * @link http://book.cakephp.org/view/1300/requireSecure
  */
 	function requireSecure() {
 		$args = func_get_args();
 		$this->_requireMethod('Secure', $args);
 	}
-
 /**
  * Sets the actions that require an authenticated request, or empty for all actions
  *
  * @return void
  * @access public
- * @link http://book.cakephp.org/view/1301/requireAuth
  */
 	function requireAuth() {
 		$args = func_get_args();
 		$this->_requireMethod('Auth', $args);
 	}
-
 /**
  * Sets the actions that require an HTTP-authenticated request, or empty for all actions
  *
  * @return void
  * @access public
- * @link http://book.cakephp.org/view/1302/requireLogin
  */
 	function requireLogin() {
 		$args = func_get_args();
@@ -304,14 +270,12 @@ class SecurityComponent extends Object {
 			$this->loginUsers =& $this->loginOptions['users'];
 		}
 	}
-
 /**
  * Attempts to validate the login credentials for an HTTP-authenticated request
  *
  * @param string $type Either 'basic', 'digest', or null. If null/empty, will try both.
  * @return mixed If successful, returns an array with login name and password, otherwise null.
  * @access public
- * @link http://book.cakephp.org/view/1303/loginCredentials-string-type
  */
 	function loginCredentials($type = null) {
 		switch (strtolower($type)) {
@@ -344,14 +308,12 @@ class SecurityComponent extends Object {
 		}
 		return null;
 	}
-
 /**
  * Generates the text of an HTTP-authentication request header from an array of options.
  *
  * @param array $options Set of options for header
  * @return string HTTP-authentication request header
  * @access public
- * @link http://book.cakephp.org/view/1304/loginRequest-array-options
  */
 	function loginRequest($options = array()) {
 		$options = array_merge($this->loginOptions, $options);
@@ -362,19 +324,17 @@ class SecurityComponent extends Object {
 		if (strtolower($options['type']) == 'digest') {
 			$out[] = 'qop="auth"';
 			$out[] = 'nonce="' . uniqid("") . '"';
-			$out[] = 'opaque="' . md5($options['realm']) . '"';
+			$out[] = 'opaque="' . md5($options['realm']).'"';
 		}
 
-		return $auth . ' ' . implode(',', $out);
+		return $auth . ' ' . join(',', $out);
 	}
-
 /**
  * Parses an HTTP digest authentication response, and returns an array of the data, or null on failure.
  *
  * @param string $digest Digest authentication response
  * @return array Digest authentication parameters
  * @access public
- * @link http://book.cakephp.org/view/1305/parseDigestAuthData-string-digest
  */
 	function parseDigestAuthData($digest) {
 		if (substr($digest, 0, 7) == 'Digest ') {
@@ -383,7 +343,7 @@ class SecurityComponent extends Object {
 		$keys = array();
 		$match = array();
 		$req = array('nonce' => 1, 'nc' => 1, 'cnonce' => 1, 'qop' => 1, 'username' => 1, 'uri' => 1, 'response' => 1);
-		preg_match_all('/(\w+)=([\'"]?)([a-zA-Z0-9@=.\/_-]+)\2/', $digest, $match, PREG_SET_ORDER);
+		preg_match_all('@(\w+)=([\'"]?)([a-zA-Z0-9=./\_-]+)\2@', $digest, $match, PREG_SET_ORDER);
 
 		foreach ($match as $i) {
 			$keys[$i[1]] = $i[3];
@@ -395,7 +355,6 @@ class SecurityComponent extends Object {
 		}
 		return null;
 	}
-
 /**
  * Generates a hash to be compared with an HTTP digest-authenticated response
  *
@@ -403,7 +362,6 @@ class SecurityComponent extends Object {
  * @return string Digest authentication hash
  * @access public
  * @see SecurityComponent::parseDigestAuthData()
- * @link http://book.cakephp.org/view/1306/generateDigestResponseHash-array-data
  */
 	function generateDigestResponseHash($data) {
 		return md5(
@@ -412,7 +370,6 @@ class SecurityComponent extends Object {
 			md5(env('REQUEST_METHOD') . ':' . $data['uri'])
 		);
 	}
-
 /**
  * Black-hole an invalid request with a 404 error or custom callback. If SecurityComponent::$blackHoleCallback
  * is specified, it will use this callback by executing the method indicated in $error
@@ -422,9 +379,10 @@ class SecurityComponent extends Object {
  * @return mixed If specified, controller blackHoleCallback's response, or no return otherwise
  * @access public
  * @see SecurityComponent::$blackHoleCallback
- * @link http://book.cakephp.org/view/1307/blackHole-object-controller-string-error
  */
 	function blackHole(&$controller, $error = '') {
+		$this->Session->del('_Token');
+
 		if ($this->blackHoleCallback == null) {
 			$code = 404;
 			if ($error == 'login') {
@@ -436,7 +394,6 @@ class SecurityComponent extends Object {
 			return $this->_callback($controller, $this->blackHoleCallback, array($error));
 		}
 	}
-
 /**
  * Sets the actions that require a $method HTTP request, or empty for all actions
  *
@@ -446,12 +403,8 @@ class SecurityComponent extends Object {
  * @access protected
  */
 	function _requireMethod($method, $actions = array()) {
-		if (isset($actions[0]) && is_array($actions[0])) {
-			$actions = $actions[0];
-		}
 		$this->{'require' . $method} = (empty($actions)) ? array('*'): $actions;
 	}
-
 /**
  * Check if HTTP methods are required
  *
@@ -476,7 +429,6 @@ class SecurityComponent extends Object {
 		}
 		return true;
 	}
-
 /**
  * Check if access requires secure connection
  *
@@ -498,7 +450,6 @@ class SecurityComponent extends Object {
 		}
 		return true;
 	}
-
 /**
  * Check if authentication is required
  *
@@ -534,7 +485,6 @@ class SecurityComponent extends Object {
 		}
 		return true;
 	}
-
 /**
  * Check if login is required
  *
@@ -582,7 +532,6 @@ class SecurityComponent extends Object {
 		}
 		return true;
 	}
-
 /**
  * Validate submitted form
  *
@@ -596,7 +545,7 @@ class SecurityComponent extends Object {
 		}
 		$data = $controller->data;
 
-		if (!isset($data['_Token']) || !isset($data['_Token']['fields']) || !isset($data['_Token']['key'])) {
+		if (!isset($data['_Token']) || !isset($data['_Token']['fields'])) {
 			return false;
 		}
 		$token = $data['_Token']['key'];
@@ -607,8 +556,6 @@ class SecurityComponent extends Object {
 			if ($tokenData['expires'] < time() || $tokenData['key'] !== $token) {
 				return false;
 			}
-		} else {
-			return false;
 		}
 
 		$locked = null;
@@ -620,11 +567,10 @@ class SecurityComponent extends Object {
 		}
 		unset($check['_Token']);
 
-		$locked = explode('|', $locked);
-
 		$lockedFields = array();
 		$fields = Set::flatten($check);
 		$fieldList = array_keys($fields);
+		$locked = unserialize(str_rot13($locked));
 		$multi = array();
 
 		foreach ($fieldList as $i => $key) {
@@ -666,7 +612,6 @@ class SecurityComponent extends Object {
 		$check = Security::hash(serialize($fieldList) . Configure::read('Security.salt'));
 		return ($token === $check);
 	}
-
 /**
  * Add authentication key for new form posts
  *
@@ -676,10 +621,6 @@ class SecurityComponent extends Object {
  */
 	function _generateToken(&$controller) {
 		if (isset($controller->params['requested']) && $controller->params['requested'] === 1) {
-			if ($this->Session->check('_Token')) {
-				$tokenData = unserialize($this->Session->read('_Token'));
-				$controller->params['_Token'] = $tokenData;
-			}
 			return false;
 		}
 		$authKey = Security::generateAuthKey();
@@ -710,9 +651,9 @@ class SecurityComponent extends Object {
 		}
 		$controller->params['_Token'] = $token;
 		$this->Session->write('_Token', serialize($token));
+
 		return true;
 	}
-
 /**
  * Sets the default login options for an HTTP-authenticated request
  *
@@ -729,7 +670,6 @@ class SecurityComponent extends Object {
 		), array_filter($options));
 		$options = array_merge(array('opaque' => md5($options['realm'])), $options);
 	}
-
 /**
  * Calls a controller callback method
  *
@@ -743,7 +683,10 @@ class SecurityComponent extends Object {
 		if (is_callable(array($controller, $method))) {
 			return call_user_func_array(array(&$controller, $method), empty($params) ? null : $params);
 		} else {
+			// Debug::warning('Callback method ' . $method . ' in controller ' . get_class($controller)
 			return null;
 		}
 	}
 }
+
+?>

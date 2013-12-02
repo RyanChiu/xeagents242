@@ -1,23 +1,29 @@
 <?php
+/* SVN FILE: $Id$ */
 /**
  * ErrorHandler for Console Shells
  *
+ * Long description for file
+ *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @filesource
+ * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package       cake
  * @subpackage    cake.cake.console
  * @since         CakePHP(tm) v 1.2.0.5074
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-
 /**
  * Error Handler for Cake console.
  *
@@ -25,7 +31,6 @@
  * @subpackage    cake.cake.console
  */
 class ErrorHandler extends Object {
-
 /**
  * Standard output stream.
  *
@@ -33,7 +38,6 @@ class ErrorHandler extends Object {
  * @access public
  */
 	var $stdout;
-
 /**
  * Standard error stream.
  *
@@ -41,7 +45,6 @@ class ErrorHandler extends Object {
  * @access public
  */
 	var $stderr;
-
 /**
  * Class constructor.
  *
@@ -51,9 +54,12 @@ class ErrorHandler extends Object {
 	function __construct($method, $messages) {
 		$this->stdout = fopen('php://stdout', 'w');
 		$this->stderr = fopen('php://stderr', 'w');
-		call_user_func_array(array(&$this, $method), $messages);
+		if (Configure::read() > 0 || $method == 'error') {
+			call_user_func_array(array(&$this, $method), $messages);
+		} else {
+			call_user_func_array(array(&$this, 'error404'), $messages);
+		}
 	}
-
 /**
  * Displays an error page (e.g. 404 Not found).
  *
@@ -63,9 +69,8 @@ class ErrorHandler extends Object {
 	function error($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr($code . $name . $message."\n");
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Convenience method to display a 404 page.
  *
@@ -74,14 +79,11 @@ class ErrorHandler extends Object {
  */
 	function error404($params) {
 		extract($params, EXTR_OVERWRITE);
-		$this->error(array(
-			'code' => '404',
-			'name' => 'Not found',
-			'message' => sprintf(__("The requested address %s was not found on this server.", true), $url, $message)
-		));
-		$this->_stop(1);
+		$this->error(array('code' => '404',
+							'name' => 'Not found',
+							'message' => sprintf(__("The requested address %s was not found on this server.", true), $url, $message)));
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Controller web page.
  *
@@ -92,9 +94,8 @@ class ErrorHandler extends Object {
 		extract($params, EXTR_OVERWRITE);
 		$controllerName = str_replace('Controller', '', $className);
 		$this->stderr(sprintf(__("Missing Controller '%s'", true), $controllerName));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Action web page.
  *
@@ -104,9 +105,8 @@ class ErrorHandler extends Object {
 	function missingAction($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Method '%s' in '%s'", true), $action, $className));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Private Action web page.
  *
@@ -116,9 +116,8 @@ class ErrorHandler extends Object {
 	function privateAction($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Trying to access private method '%s' in '%s'", true), $action, $className));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Table web page.
  *
@@ -128,9 +127,8 @@ class ErrorHandler extends Object {
 	function missingTable($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing database table '%s' for model '%s'", true), $table, $className));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Database web page.
  *
@@ -139,9 +137,8 @@ class ErrorHandler extends Object {
  */
 	function missingDatabase($params = array()) {
 		$this->stderr(__("Missing Database", true));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing View web page.
  *
@@ -151,9 +148,8 @@ class ErrorHandler extends Object {
 	function missingView($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing View '%s' for '%s' in '%s'", true), $file, $action, $className));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Layout web page.
  *
@@ -163,9 +159,8 @@ class ErrorHandler extends Object {
 	function missingLayout($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Layout '%s'", true), $file));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Database Connection web page.
  *
@@ -175,9 +170,8 @@ class ErrorHandler extends Object {
 	function missingConnection($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(__("Missing Database Connection. Try 'cake bake'", true));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Helper file web page.
  *
@@ -187,9 +181,8 @@ class ErrorHandler extends Object {
 	function missingHelperFile($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Helper file '%s' for '%s'", true), $file, Inflector::camelize($helper)));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Helper class web page.
  *
@@ -199,9 +192,8 @@ class ErrorHandler extends Object {
 	function missingHelperClass($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Helper class '%s' in '%s'", true), Inflector::camelize($helper), $file));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Component file web page.
  *
@@ -211,9 +203,8 @@ class ErrorHandler extends Object {
 	function missingComponentFile($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Component file '%s' for '%s'", true), $file, Inflector::camelize($component)));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Component class web page.
  *
@@ -223,9 +214,8 @@ class ErrorHandler extends Object {
 	function missingComponentClass($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing Component class '%s' in '%s'", true), Inflector::camelize($component), $file));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Renders the Missing Model class web page.
  *
@@ -235,9 +225,8 @@ class ErrorHandler extends Object {
 	function missingModel($params) {
 		extract($params, EXTR_OVERWRITE);
 		$this->stderr(sprintf(__("Missing model '%s'", true), $className));
-		$this->_stop(1);
+		$this->_stop();
 	}
-
 /**
  * Outputs to the stdout filehandle.
  *
@@ -252,7 +241,6 @@ class ErrorHandler extends Object {
 			fwrite($this->stdout, $string);
 		}
 	}
-
 /**
  * Outputs to the stderr filehandle.
  *
@@ -263,3 +251,4 @@ class ErrorHandler extends Object {
 		fwrite($this->stderr, "Error: ". $string . "\n");
 	}
 }
+?>

@@ -1,36 +1,45 @@
 <?php
+/* SVN FILE: $Id$ */
 /**
  * Library of array functions for Cake.
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @filesource
+ * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package       cake
  * @subpackage    cake.cake.libs
  * @since         CakePHP(tm) v 1.2.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-
 /**
  * Class used for manipulation of arrays.
+ *
+ * Long description for class
  *
  * @package       cake
  * @subpackage    cake.cake.libs
  */
-class Set {
-
+class Set extends Object {
+/**
+ * Deprecated
+ *
+ */
+	var $value = array();
 /**
  * This function can be thought of as a hybrid between PHP's array_merge and array_merge_recursive. The difference
  * to the two is that if an array key contains another array then the function behaves recursive (unlike array_merge)
- * but does not do if for keys containing strings (unlike array_merge_recursive).
- * See the unit test for more information.
+ * but does not do if for keys containing strings (unlike array_merge_recursive). See the unit test for more information.
  *
  * Note: This function will work with an unlimited amount of arguments and typecasts non-array parameters into arrays.
  *
@@ -57,7 +66,6 @@ class Set {
 		}
 		return $r;
 	}
-
 /**
  * Filters empty elements out of a route array, excluding '0'.
  *
@@ -77,7 +85,6 @@ class Set {
 		}
 		return false;
 	}
-
 /**
  * Pushes the differences in $array2 onto the end of $array
  *
@@ -104,7 +111,6 @@ class Set {
 		}
 		return $array;
 	}
-
 /**
  * Maps the contents of the Set object to an object hierarchy.
  * Maintains numeric keys as arrays of objects
@@ -218,7 +224,6 @@ class Set {
 		}
 		return $out;
 	}
-
 /**
  * Checks to see if all the values in the array are numeric
  *
@@ -248,7 +253,6 @@ class Set {
 		}
 		return $numeric;
 	}
-
 /**
  * Return a value from an array list if the key exists.
  *
@@ -278,14 +282,13 @@ class Set {
 		}
 		return $return;
 	}
-
 /**
  * Returns a series of values extracted from an array, formatted in a format string.
  *
- * @param array $data Source array from which to extract the data
- * @param string $format Format string into which values will be inserted, see sprintf()
- * @param array $keys An array containing one or more Set::extract()-style key paths
- * @return array An array of strings extracted from $keys and formatted with $format
+ * @param array		$data Source array from which to extract the data
+ * @param string	$format Format string into which values will be inserted, see sprintf()
+ * @param array		$keys An array containing one or more Set::extract()-style key paths
+ * @return array	An array of strings extracted from $keys and formatted with $format
  * @access public
  * @static
  */
@@ -327,7 +330,7 @@ class Set {
 			for ($j = 0; $j < $count; $j++) {
 				$args = array();
 				for ($i = 0; $i < $count2; $i++) {
-					if (array_key_exists($j, $data[$i])) {
+					if (isset($data[$i][$j])) {
 						$args[] = $data[$i][$j];
 					}
 				}
@@ -336,13 +339,10 @@ class Set {
 		}
 		return $out;
 	}
-
 /**
- * Implements partial support for XPath 2.0. If $path is an array or $data is empty it the call
- * is delegated to Set::classicExtract.
+ * Implements partial support for XPath 2.0. If $path is an array or $data is empty it the call is delegated to Set::classicExtract.
  *
- * #### Currently implemented selectors:
- *
+ * Currently implemented selectors:
  * - /User/id (similar to the classic {n}.User.id)
  * - /User[2]/name (selects the name of the second User)
  * - /User[id>2] (selects all Users with an id > 2)
@@ -355,17 +355,15 @@ class Set {
  * - /Comment[text=/cakephp/i] (Selects the all comments that have a text matching the regex /cakephp/i)
  * - /Comment/@* (Selects the all key names of all comments)
  *
- * #### Other limitations:
- *
+ * Other limitations:
  * - Only absolute paths starting with a single '/' are supported right now
  *
- * **Warning**: Even so it has plenty of unit tests the XPath support has not gone through a lot of
- * real-world testing. Please report Bugs as you find them. Suggestions for additional features to
- * implement are also very welcome!
+ * Warning: Even so it has plenty of unit tests the XPath support has not gone through a lot of real-world testing. Please report
+ * Bugs as you find them. Suggestions for additional features to imlement are also very welcome!
  *
  * @param string $path An absolute XPath 2.0 path
- * @param array $data An array of data to extract from
- * @param array $options Currently only supports 'flatten' which can be disabled for higher XPath-ness
+ * @param string $data An array of data to extract from
+ * @param string $options Currently only supports 'flatten' which can be disabled for higher XPath-ness
  * @return array An array of matched items
  * @access public
  * @static
@@ -389,11 +387,11 @@ class Set {
 		$options = array_merge(array('flatten' => true), $options);
 		if (!isset($contexts[0])) {
 			$current = current($data);
-			if ((is_array($current) && count($data) < 1) || !is_array($current) || !Set::numeric(array_keys($data))) {
+			if ((is_array($current) && count($data) <= 1) || !is_array($current) || !Set::numeric(array_keys($data))) {
 				$contexts = array($data);
 			}
 		}
-		$tokens = array_slice(preg_split('/(?<!=|\\\\)\/(?![a-z-\s]*\])/', $path), 1);
+		$tokens = array_slice(preg_split('/(?<!=)\/(?![a-z-]*\])/', $path), 1);
 
 		do {
 			$token = array_shift($tokens);
@@ -411,12 +409,12 @@ class Set {
 					if (count($context['trace']) == 1) {
 						$context['trace'][] = $context['key'];
 					}
-					$parent = implode('/', $context['trace']) . '/.';
+					$parent = join('/', $context['trace']) . '/.';
 					$context['item'] = Set::extract($parent, $data);
 					$context['key'] = array_pop($context['trace']);
 					if (isset($context['trace'][1]) && $context['trace'][1] > 0) {
 						$context['item'] = $context['item'][0];
-					} elseif (!empty($context['item'][$key])) {
+					} else if(!empty($context['item'][$key])){
 						$context['item'] = $context['item'][$key];
 					} else {
 						$context['item'] = array_shift($context['item']);
@@ -431,16 +429,13 @@ class Set {
 						'key' => $key,
 						'item' => array_keys($context['item']),
 					);
-				} elseif (is_array($context['item'])
-					&& array_key_exists($token, $context['item'])
-					&& !(strval($key) === strval($token) && count($tokens) == 1 && $tokens[0] === '.')) {
+				} elseif (is_array($context['item']) && array_key_exists($token, $context['item'])) {
 					$items = $context['item'][$token];
 					if (!is_array($items)) {
 						$items = array($items);
 					} elseif (!isset($items[0])) {
 						$current = current($items);
-						$currentKey = key($items);
-						if (!is_array($current) || (is_array($current) && count($items) <= 1 && !is_numeric($currentKey))) {
+						if ((is_array($current) && count($items) <= 1) || !is_array($current)) {
 							$items = array($items);
 						}
 					}
@@ -449,18 +444,18 @@ class Set {
 						$ctext = array($context['key']);
 						if (!is_numeric($key)) {
 							$ctext[] = $token;
-							$tok = array_shift($tokens);
-							if (isset($items[$tok])) {
-								$ctext[] = $tok;
-								$item = $items[$tok];
+							$token = array_shift($tokens);
+							if (isset($items[$token])) {
+								$ctext[] = $token;
+								$item = $items[$token];
 								$matches[] = array(
 									'trace' => array_merge($context['trace'], $ctext),
-									'key' => $tok,
+									'key' => $key,
 									'item' => $item,
 								);
 								break;
-							} elseif ($tok !== null) {
-								array_unshift($tokens, $tok);
+							} else {
+								array_unshift($tokens, $token);
 							}
 						} else {
 							$key = $token;
@@ -472,7 +467,7 @@ class Set {
 							'item' => $item,
 						);
 					}
-				} elseif ($key === $token || (ctype_digit($token) && $key == $token) || $token === '.') {
+				} elseif (($key === $token || (ctype_digit($token) && $key == $token) || $token === '.')) {
 					$context['trace'][] = $key;
 					$matches[] = array(
 						'trace' => $context['trace'],
@@ -487,7 +482,7 @@ class Set {
 					$length = count($matches);
 					foreach ($matches as $i => $match) {
 						if (Set::matches(array($condition), $match['item'], $i + 1, $length)) {
-							$filtered[$i] = $match;
+							$filtered[] = $match;
 						}
 					}
 					$matches = $filtered;
@@ -511,7 +506,6 @@ class Set {
 		}
 		return $r;
 	}
-
 /**
  * This function can be used to see if a single item or a given xpath match certain conditions.
  *
@@ -584,7 +578,6 @@ class Set {
 		}
 		return true;
 	}
-
 /**
  * Gets a value from an array or object that is contained in a given path using an array path syntax, i.e.:
  * "{n}.Person.{[a-z]+}" - Where "{n}" represents a numeric key, "Person" represents a string literal,
@@ -675,7 +668,6 @@ class Set {
 		}
 		return $data;
 	}
-
 /**
  * Inserts $data into an array as defined by $path.
  *
@@ -704,13 +696,9 @@ class Set {
 				}
 				$_list =& $_list[$key];
 			}
-			if (!is_array($_list)) {
-				return array();
-			}
 		}
 		return $list;
 	}
-
 /**
  * Removes an element from a Set or array as defined by $path.
  *
@@ -744,7 +732,6 @@ class Set {
 		}
 		return $list;
 	}
-
 /**
  * Checks if a particular path is set in an array
  *
@@ -777,14 +764,12 @@ class Set {
 		}
 		return true;
 	}
-
 /**
  * Computes the difference between a Set and an array, two Sets, or two arrays
  *
  * @param mixed $val1 First value
  * @param mixed $val2 Second value
- * @return array Returns the key => value pairs that are not common in $val1 and $val2
- * The expression for this function is ($val1 - $val2) + ($val2 - ($val1 - $val2))
+ * @return array Computed difference
  * @access public
  * @static
  */
@@ -795,18 +780,38 @@ class Set {
 		if (empty($val2)) {
 			return (array)$val1;
 		}
-		$intersection = array_intersect_key($val1, $val2);
-		while (($key = key($intersection)) !== null) {
-			if ($val1[$key] == $val2[$key]) {
-				unset($val1[$key]);
-				unset($val2[$key]);
+		$out = array();
+
+		foreach ($val1 as $key => $val) {
+			$exists = array_key_exists($key, $val2);
+
+			if ($exists && $val2[$key] != $val) {
+				$out[$key] = $val;
+			} elseif (!$exists) {
+				$out[$key] = $val;
 			}
-			next($intersection);
+			unset($val2[$key]);
 		}
 
-		return $val1 + $val2;
+		foreach ($val2 as $key => $val) {
+			if (!array_key_exists($key, $out)) {
+				$out[$key] = $val;
+			}
+		}
+		return $out;
 	}
-
+/**
+ * Determines if two Sets or arrays are equal
+ *
+ * @param array $val1 First value
+ * @param array $val2 Second value
+ * @return boolean true if they are equal, false otherwise
+ * @access public
+ * @static
+ */
+	function isEqual($val1, $val2 = null) {
+		return ($val1 == $val2);
+	}
 /**
  * Determines if one Set or array contains the exact keys and values of another.
  *
@@ -832,7 +837,6 @@ class Set {
 		}
 		return true;
 	}
-
 /**
  * Counts the dimensions of an array. If $all is set to false (which is the default) it will
  * only consider the dimension of the first element in the array.
@@ -862,7 +866,6 @@ class Set {
 		}
 		return $return;
 	}
-
 /**
  * Normalizes a string or array list.
  *
@@ -912,7 +915,6 @@ class Set {
 		}
 		return $list;
 	}
-
 /**
  * Creates an associative array using a $path1 as the path to build its keys, and optionally
  * $path2 as path to get the values. If $path2 is not specified, all values will be initialized
@@ -941,9 +943,6 @@ class Set {
 			$keys = Set::format($data, $format, $path1);
 		} else {
 			$keys = Set::extract($data, $path1);
-		}
-		if (empty($keys)) {
-			return array();
 		}
 
 		if (!empty($path2) && is_array($path2)) {
@@ -976,17 +975,15 @@ class Set {
 				return $out;
 			}
 		}
-		if (empty($vals)) {
-			return array();
-		}
+
 		return array_combine($keys, $vals);
 	}
-
 /**
- * Converts an object into an array.
+ * Converts an object into an array. If $object is no object, reverse
+ * will return the same value.
+ *
  * @param object $object Object to reverse
- * @return array Array representation of given object
- * @public
+ * @return array
  * @static
  */
 	function reverse($object) {
@@ -1026,7 +1023,6 @@ class Set {
 		}
 		return $out;
 	}
-
 /**
  * Collapses a multi-dimensional array into a single dimension, using a delimited array path for
  * each array element's key, i.e. array(array('Foo' => array('Bar' => 'Far'))) becomes
@@ -1062,7 +1058,6 @@ class Set {
 		}
 		return $result;
 	}
-
 /**
  * Flattens an array for sorting
  *
@@ -1078,7 +1073,7 @@ class Set {
 			if (!is_null($key)) {
 				$id = $key;
 			}
-			if (is_array($r) && !empty($r)) {
+			if (is_array($r) && count($r)) {
 				$stack = array_merge($stack, Set::__flatten($r, $id));
 			} else {
 				$stack[] = array('id' => $id, 'value' => $r);
@@ -1086,21 +1081,16 @@ class Set {
 		}
 		return $stack;
 	}
-
 /**
  * Sorts an array by any value, determined by a Set-compatible path
  *
- * @param array $data An array of data to sort
+ * @param array $data
  * @param string $path A Set-compatible path to the array value
- * @param string $dir Direction of sorting - either ascending (ASC), or descending (DESC)
- * @return array Sorted array of data
+ * @param string $dir asc/desc
+ * @return array
  * @static
  */
 	function sort($data, $path, $dir) {
-		$originalKeys = array_keys($data);
-		if (is_numeric(implode('', $originalKeys))) {
-			$data = array_values($data);
-		}
 		$result = Set::__flatten(Set::extract($data, $path));
 		list($keys, $values) = array(Set::extract($result, '{n}.id'), Set::extract($result, '{n}.value'));
 
@@ -1112,6 +1102,7 @@ class Set {
 		}
 		array_multisort($values, $dir, $keys, $dir);
 		$sorted = array();
+
 		$keys = array_unique($keys);
 
 		foreach ($keys as $k) {
@@ -1119,42 +1110,12 @@ class Set {
 		}
 		return $sorted;
 	}
-
 /**
- * Allows the application of a callback method to elements of an
- * array extracted by a Set::extract() compatible path.
+ * Deprecated, Set class should be called statically
  *
- * @param mixed $path Set-compatible path to the array value
- * @param array $data An array of data to extract from & then process with the $callback.
- * @param mixed $callback Callback method to be applied to extracted data.
- * See http://ca2.php.net/manual/en/language.pseudo-types.php#language.types.callback for examples
- * of callback formats.
- * @param array $options Options are:
- *                       - type : can be pass, map, or reduce. Map will handoff the given callback
- *                                to array_map, reduce will handoff to array_reduce, and pass will
- *                                use call_user_func_array().
- * @return mixed Result of the callback when applied to extracted data
- * @access public
- * @static
  */
-	function apply($path, $data, $callback, $options = array()) {
-		$defaults = array('type' => 'pass');
-		$options = array_merge($defaults, $options);
-
-		$extracted = Set::extract($path, $data);
-
-		if ($options['type'] === 'map') {
-			$result = array_map($callback, $extracted);
-
-		} elseif ($options['type'] === 'reduce') {
-			$result = array_reduce($extracted, $callback);
-
-		} elseif ($options['type'] === 'pass') {
-			$result = call_user_func_array($callback, array($extracted));
-		} else {
-			return null;
-		}
-
-		return  $result;
+	function &get() {
+		trigger_error('get() is deprecated. Set class should be called statically', E_USER_WARNING);
 	}
 }
+?>
