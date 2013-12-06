@@ -50,7 +50,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 							<font color="darkred">SCsupportforChatters@XuesEros.com</font><br/>
 						</div>
 						<div style="float:right;width:45%;">
-							<?php echo $this->Html->image('main/RIGHTBEE.jpg', array('style' => 'height:245px;border:0px;')); ?>
+							<?php echo $this->Html->image('main/RIGHTBEE.jpg', array('style' => 'height:90px;float:right;border:0px;margin-right:40px;')); ?>
 						</div>
 					</div>
 					<div class="content-bottom"></div>
