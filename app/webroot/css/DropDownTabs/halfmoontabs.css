@@ -34,7 +34,7 @@ color: black;
 }
 
 .halfmoon li a:hover, .halfmoon li.selected a{
-background-color: /*#464F26*/#006633;
+background-color: /*#464F26*/#ccff00;
 color: black;
 }
 
@@ -71,5 +71,5 @@ width: 100%;
 }
 
 .dropmenudiv_e a:hover{ /*THEME CHANGE HERE*/
-background-color: /*#c8e181*/#003333;
+background-color: /*#c8e181*/#ccff00;
 }
