@@ -466,14 +466,14 @@ echo $scripts_for_layout;
 					?>
 				</div>
 				<div id="dropmenu_toolbox_admin" class="dropmenudiv_e"
-					style="width: 180px;">
+					style="width: 130px;">
 					<?php
 					echo $this->Html->link('<font><b>Update Cams-2</b></font>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 7),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<font><b>Update LC-Dating</b></font>',
+					echo $this->Html->link('<font><b>Update XEDating</b></font>',
 						array('controller' => 'accounts', 'action' => 'updtoolbox', 'site' => 2),
 						array('escape' => false), 
 						false
@@ -511,14 +511,14 @@ echo $scripts_for_layout;
 				if ($role == 1 || $role == 2 || !in_array($userinfo['id'], array(1, 2))) {
 				?>
 				<div id="dropmenu_toolbox_normal" class="dropmenudiv_e"
-					style="width: 120px;">
+					style="width: 130px;">
 					<?php
 					echo $this->Html->link('<font><b>Cams-2</b></font>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 7),
 						array('escape' => false), 
 						false
 					);
-					echo $this->Html->link('<font><b>LC-Dating</b></font>',
+					echo $this->Html->link('<font><b>XEDating</b></font>',
 						array('controller' => 'accounts', 'action' => 'toolbox', 'site' => 2),
 						array('escape' => false), 
 						false
