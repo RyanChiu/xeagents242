@@ -105,6 +105,8 @@
  * thus not recommended for production applications.
  */
 	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
+	Configure::write('App.base', '/xe');
+	Configure::write('App.baseUrl', '/xe');
 
 /**
  * To configure CakePHP to use a particular domain URL
