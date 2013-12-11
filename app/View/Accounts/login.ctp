@@ -61,7 +61,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			</div>
 			<div style="float:left;width:135px;height:25px;">
 			<?php
-			echo $this->Form->submit('LET ME IN', array('style' => 'width:80px;'));
+			echo $this->Form->submit('ENTER', array('style' => 'width:80px;'));
 			?>
 			</div>
 		</td>
