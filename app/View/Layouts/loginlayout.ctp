@@ -38,16 +38,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 					<div class="content-top"></div>
 					<div class="content-mid">
 						<div style="float:left;width:45%;text-align:right;">
-							<font color="darkred">XuesEros RGP Companies INC.</font><br/><br/>
-							<font color="white">TO Get your Office account Contact us:</font><br/><br/>
-							<font color="darkred">Affiliate Manager: Riva Chau	vin</font><br/>
-							<font color="white">Email: RivaCha@xueseros.com</font><br/>
-							<font color="white">Skype: RPGRivaCha</font><br/>
-							<font color="white">YM: RPGRivaCHA@Yahoo.com</font><br/><br/>
-							<font color="darkred">Executive Program Manager: Jana A. Miller</font><br/>
-							<font color="white">Email: JanaMila@xueseros.com</font><br/><br/>
-							<font color="darkred">Affiliate Support</font><br/>
-							<font color="darkred">SCsupportforChatters@XuesEros.com</font><br/>
+							&nbsp;
 						</div>
 						<div style="float:right;width:45%;">
 							<?php echo $this->Html->image('main/RIGHTBEE.jpg', array('style' => 'height:90px;float:right;border:0px;margin-right:40px;')); ?>
