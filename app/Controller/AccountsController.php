@@ -2420,7 +2420,7 @@ class AccountsController extends AppController {
 		$files = array_values($_FILES);
 		$_file = $files[0];
 		
-		$filename = "/var/www/uploads/images/" . $_file['name'];
+		$filename = "/var/nginx/uploads/images/" . $_file['name'];
 		if (!copy($_file['tmp_name'], $filename)) {
 			$this->set('script', __mkuploadhtml($funcn, '', 'Failed to upload.'));
 		} else {
