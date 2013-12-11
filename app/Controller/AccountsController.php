@@ -2424,7 +2424,7 @@ class AccountsController extends AppController {
 		if (!copy($_file['tmp_name'], $filename)) {
 			$this->set('script', __mkuploadhtml($funcn, '', 'Failed to upload.'));
 		} else {
-			$this->set('script', __mkuploadhtml($funcn, '/../uploads/images/' . $_file['name'], ''));
+			$this->set('script', __mkuploadhtml($funcn, '/uploads/images/' . $_file['name'], ''));
 		}
 	}
 }
