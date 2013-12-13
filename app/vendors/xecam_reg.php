@@ -33,7 +33,7 @@ $rs = mysql_query($sql, $conn->dblink)
 while ($r = mysql_fetch_assoc($rs)) {
 	$agname = $r['username'];
 	// set URL and other appropriate options
-	curl_setopt($ch, CURLOPT_URL, "http://bigbucksrevenue.com/_scripts/update-chan/addchan.php?a=webmasters@paydirtdollars.com&channel=$agname&code=$agname");
+	curl_setopt($ch, CURLOPT_URL, "http://bigbucksrevenue.com/_scripts/update-chan/addchan.php?a=xx@xx.com&channel=$agname&code=$agname");
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	// grab URL and pass it to the browser
 	if (!curl_exec($ch)) {
