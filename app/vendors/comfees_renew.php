@@ -6,6 +6,7 @@
  * It takes no parameter.
  */
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 $zconn = new zmysqlConn;
 /*1.empty the table*/

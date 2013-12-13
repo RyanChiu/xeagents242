@@ -1,5 +1,6 @@
 <?php
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 function fillu($str, $forelen = 24, $afterlen = 24) {
 	$str0 = $str;

@@ -6,6 +6,7 @@
  */
 
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 $enddate = $argv[1];
 $days = (int)$argv[2];

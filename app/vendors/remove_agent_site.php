@@ -9,6 +9,7 @@
  * agent_site_mappings).
  */
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 //exit:if parameters are wrong
 if (($argc - 1) != 2) {

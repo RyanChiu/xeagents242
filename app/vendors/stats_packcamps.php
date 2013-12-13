@@ -5,6 +5,7 @@
  * It takes no parameters at all.
  */
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 $zconn = new zmysqlConn;
 $sql = "select * from agent_site_mappings where flag = 1";

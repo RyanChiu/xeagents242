@@ -16,6 +16,7 @@
  * altered with "don't delete anything in db but match and insert campaign id" stuff
  */
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 if (($argc - 1) == 2) {
 	$path_parts = pathinfo($argv[0]);
