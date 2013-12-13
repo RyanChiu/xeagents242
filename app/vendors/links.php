@@ -6,6 +6,7 @@
  */
 
 include 'zmysqlConn.class.php';
+include 'extrakits.inc.php';
 
 $zconn = new zmysqlConn();
 
