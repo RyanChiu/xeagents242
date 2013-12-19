@@ -984,11 +984,11 @@ class AccountsController extends AppController {
 					/*send out an email to inform that a new agent created*/
 					$this->__sendemail(
 						"A new office '"
-						. $this->request->data['Account']['username']
-						. "' created, please check it out.",
+							. $this->request->data['Account']['username']
+							. "' created, please check it out.",
 						"empty",
-						"admin@PayDirtDollars.com",
-						"newaccounts@PayDirtDollars.com"
+						"support@xueseros.com",
+						"newaffiliates@xueseros.com"
 					);
 
 					/*redirect to some page*/
@@ -1159,8 +1159,8 @@ class AccountsController extends AppController {
 							. $this->request->data['Account']['username'] 
 							. "' created, please check it out.",
 						"empty",
-						"admin@PayDirtDollars.com",
-						"newaccounts@PayDirtDollars.com"
+						"support@xueseros.com",
+						"newaffiliates@xueseros.com"
 					);
 					/*redirect to some page*/ 
 					$this->Session->setFlash('Agent "' 
