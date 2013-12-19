@@ -631,7 +631,7 @@ echo $scripts_for_layout;
 	</div>
 	
 	<div style="width:1028px;margin:0 auto;font-size:12px;text-align:center;">
-		<font color="#f7df80" style="BACKGROUND-COLOR:#000000"><strong>XE-Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="#ff0000" face="Arial Black">**</font>&nbsp; Link-2=$1.95 Trial <font color="#ff0000" face="Arial Black">**</font> Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
+		<font color="#f7df80" style="BACKGROUND-COLOR:#000000"><strong>XE-Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="#ff0000" face="Arial Black">**</font>&nbsp; Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
 	</div>
 
 	<!-- for "agent must read" -->
