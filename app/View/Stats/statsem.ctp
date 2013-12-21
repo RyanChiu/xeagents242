@@ -195,7 +195,7 @@ if (!empty($rs)) {
 			. '<br/><i>' . (count($typesv) > 1 ? $typesv[1] : 'N/A') . '</i>';
 		?>
 		</th>
-		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for the some site?>>
+		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for some site(s)?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.net', 'Net'); ?>
 		</th>
 		<?php
@@ -206,7 +206,7 @@ if (!empty($rs)) {
 		<?php
 		} else if ($userinfo['role'] == -1) {
 		?>
-		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for the some site?>>Payments</th>
+		<th <?php echo in_array($selsite, array(-1, -2)) ? 'class="naClassHide"' : ''; // just do not show for some site(s)?>>Payments</th>
 		<?php
 		}
 		?>
