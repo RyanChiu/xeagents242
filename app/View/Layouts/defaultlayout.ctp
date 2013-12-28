@@ -687,9 +687,9 @@ echo $scripts_for_layout;
 				YOUR
 				<?php echo '"' . implode("\", \"", $excludedsites) . '"'; ?>
 				LINKS HAVE BEEN SUSPENDED, PLEASE CONTACT <a
-					href="mailto:support@PayDirtDollars.com"><font color="red">CVZ
+					href="mailto:SUPPORT@XUESEROS.COM"><font color="red">XUESEROS
 						SUPPORT</font> </a> FOR MORE INFO.<br /> <a
-					href="mailto:support@PayDirtDollars.com"><font color="red">support@PayDirtDollars.com</font>
+					href="mailto:support@PayDirtDollars.com"><font color="red">SUPPORT@XUESEROS.COM</font>
 				</a>
 			</p>
 			<div style="margin: 12px 2px 2px 2px; font-weight: bolder;">REASONS
