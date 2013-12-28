@@ -110,7 +110,7 @@ echo $scripts_for_layout;
 						<?php
 						echo $this->Html->link('<span><font>NEWS</font></span>',
 							array('controller' => 'accounts', 'action' => 'addnews'),
-							array(/*'rel' => 'dropmenu_admin_news', */'escape' => false),
+							array('rel' => 'dropmenu_admin_news', 'escape' => false),
 							false
 						);
 						?>
@@ -722,7 +722,6 @@ echo $scripts_for_layout;
 		</div>
 	</div>
 	<script type="text/javascript">
-		/*
 		jQuery(document).ready(function() {
 			jQuery("a#attentions_link").fancybox({
 				'type': 'inline',
@@ -731,7 +730,7 @@ echo $scripts_for_layout;
 				'modal': true
 			});
 			jQuery("a#attentions_link").click();
-		});*/
+		});
 	</script>
 	<?php
 	}
