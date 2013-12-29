@@ -9,7 +9,7 @@ class StatsController extends AppController {
 	var $uses = array(
 		'ViewCompany', 'ViewLiteAgent', 'Site', 'Type',
 		'Stats', 'Site', 'Type',
-		'ViewStats', 'TmpStats', 'RunStats', 'ViewTStats'
+		'ViewStats', 'TStats', 'RunStats', 'ViewTStats'
 	);
 	var $components = array('RequestHandler');
 	var $helpers = array(
@@ -750,36 +750,42 @@ class StatsController extends AppController {
 		$this->layout = "emptylayout";
 		Configure::write('debug', 0);
 		
-		$frauds = intval($_REQUEST['value']);
-		if ($this->__runid != -1 && $frauds >= 0
+		$frauds = -1;
+		if ($this->__runid != -1
 			&& array_key_exists('date', $this->passedArgs)
 			&& array_key_exists('agentid', $this->passedArgs)
 			&& array_key_exists('siteid', $this->passedArgs)
 			&& array_key_exists('typeid', $this->passedArgs)
+			&& array_key_exists('frauds', $this->passedArgs)
 		) {
-			if ($this->Stats->updateAll(
-					array('frauds' => $frauds),
-					array(
-						'convert(trxtime, date)' => $this->passedArgs['date'],
-						'agentid' => $this->passedArgs['agentid'],
-						'siteid' => $this->passedArgs['siteid'],
-						'typeid' => $this->passedArgs['typeid']
+			$frauds = $this->passedArgs['frauds'];
+			if ($frauds >= 0) {
+				if ($this->Stats->updateAll(
+						array('frauds' => $frauds),
+						array(
+							'convert(trxtime, date)' => $this->passedArgs['date'],
+							'agentid' => $this->passedArgs['agentid'],
+							'siteid' => $this->passedArgs['siteid'],
+							'typeid' => $this->passedArgs['typeid']
+						)
 					)
-				)
-				&&
-				$this->TmpStats->updateAll(
-					array('frauds' => $frauds),
-					array(
-						'runid' => $this->__runid,
-						'convert(trxtime, date)' => $this->passedArgs['date'],
-						'agentid' => $this->passedArgs['agentid'],
-						'siteid' => $this->passedArgs['siteid'],
-						'typeid' => $this->passedArgs['typeid']
+					&&
+					$this->TStats->updateAll(
+						array('frauds' => 'frauds + ' . $frauds),
+						array(
+							'run_id' => $this->__runid,
+							'convert(trxtime, date)' => $this->passedArgs['date'],
+							'agentid' => $this->passedArgs['agentid'],
+							'siteid' => $this->passedArgs['siteid']
+						)
 					)
-				)
-			) {
+				) {
+					//doing nothing here for now
+				} else {
+					$frauds = -2;
+				}
 			} else {
-				$frauds = -1;
+				$frauds = -3;
 			}
 			
 		}

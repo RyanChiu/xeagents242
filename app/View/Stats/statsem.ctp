@@ -151,16 +151,14 @@ if (!empty($rs)) {
 		<th <?php echo $selsite != 7 ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*'); ?>
 		</th>
-		<th <?php echo $userinfo['role'] == 0 ? 'class="naClassHide"' : 'class="naClassHide"'; ?>>
-		<?php //echo $this->ExPaginator->sort('Frauds', 'ViewTStats.frauds'); ?>
+		<th <?php echo in_array($selsite, array(-1, 7)) ? '' : 'class="naClassHide"'; ?>>
 		<?php
 			echo '<font size="1">'; 
 			echo $this->ExPaginator->sort('ViewTStats.frauds', 'Frauds');
 			echo '</font>';
-			echo '<br/><font size="1">(for revise)</font>';
 		?>
 		</th>
-		<th <?php echo $userinfo['role'] != -1 ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo !in_array($selsite, array(-1, 7)) ? '' : 'class="naClassHide"'; ?>>
 		<?php
 			echo $this->ExPaginator->sort('ViewTStats.chargebacks', 'Frauds');
 		?>
@@ -301,7 +299,71 @@ if (!empty($rs)) {
 		<td><?php echo $r['ViewTStats']['uniques']; ?></td>
 		<!--<td><?php //echo $r['ViewTStats']['chargebacks']; ?></td>-->
 		<td><?php echo $r['ViewTStats']['signups']; ?></td>
-		<td><?php echo $r['ViewTStats']['frauds']; ?></td>
+		<td>
+			<?php
+			$linkID = "linkFruads_" . $i;
+			$divPopID = "divFraudsPop_" . $i;
+			$divID = "divFrauds_" . $i;
+			$iptID = "iptFrauds_" . $i;
+			$iptLinkID = "iptFraudsLink_" . $i;
+			$selID = "selFrauds_" . $i;
+			$imgEditID = "imgEditFrauds_" . $i;
+			$imgSaveID = "imgSaveFrauds_" . $i;
+			$imgCloseID = "imgCloseFrauds_" . $i;
+			$frauds = $r['ViewTStats']['frauds'];
+			?>
+			<div id="<?php echo $divID; ?>" style="float:left;"><?php echo $frauds; ?></div>
+			<?php
+			if ($userinfo['role'] == 0 && $bywhat == 3) {
+			?>
+				<a href="<?php echo '#' . $divPopID; ?>" id="<?php echo $linkID; ?>" class="linkFrauds" style="display:none;">#</a> 
+				<div style="display:none"><div id="<?php echo $divPopID; ?>" style="width:320px;">
+					<?php echo $divPopID; ?>
+					<?php
+					$_types = array();
+					$h = 0;
+					foreach ($types as $tk => $tv) {
+						if ($h >= 1) {
+							$_types[$tk] = $tv;
+						}
+						$h++;
+					}  
+					?>
+					<input type="hidden" id="<?php echo $iptLinkID; ?>"/>
+					<?php echo $this->Form->input(null, array('label' => '', 'options' => $_types, 'type' => 'select', 'style' => 'float:left;width:120px;height:18px;', 'id' => $selID)); ?> 
+					<input id="<?php echo $iptID; ?>" style="float:left;width:120px;height:17px;margin-left:6px;" value="<?php echo $frauds; ?>"/>
+					<?php echo $this->Html->image('iconSave.png', array('style' => 'width:18px;height:18px;float:left;margin-left:12px;cursor:pointer;', 'id' => $imgSaveID)); ?>
+					<?php echo $this->Html->image('fancy_close.png', array('style' => 'width:23px;height:23px;float:right;cursor:pointer;', 'id' => $imgCloseID)); ?>					
+				</div></div>
+				
+				<?php echo $this->Html->image('iconEdit.png', array('style' => 'width:16px;height:16px;float:right;cursor:pointer;', 'id' => $imgEditID)); ?>
+				<script type="text/javascript">
+				jQuery("#<?php echo $imgEditID; ?>").click(function(){
+					jQuery("#<?php echo $linkID; ?>").click();
+				});
+				jQuery("#<?php echo $iptLinkID; ?>").val("<?php echo $this->Html->url(array("controller" => "stats", "action" => "updfrauds",
+					"date" => substr($r['ViewTStats']['trxtime'], 0, 10),
+					"agentid" => $r['ViewTStats']['agentid'],
+					"siteid" => $r['ViewTStats']['siteid']
+					)); ?>");
+				jQuery("#<?php echo $imgSaveID; ?>").click(function(){
+					var link = jQuery("#<?php echo $iptLinkID; ?>").val()
+						+ "/typeid:" + jQuery("#<?php echo $selID; ?>").val()
+						+ "/frauds:" + jQuery("#<?php echo $iptID; ?>").val()
+					jQuery.post(link, function(data) {
+						alert(data);
+						jQuery("#<?php echo $divID; ?>").html(link);
+					});
+					jQuery.fancybox.close();
+				});
+				jQuery("#<?php echo $imgCloseID; ?>").click(function(){
+					jQuery.fancybox.close();
+				});
+				</script>
+			<?php
+			} 
+			?>
+		</td>
 		<td><?php echo $r['ViewTStats']['chargebacks']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type4']; ?></td>
 		<td><?php echo $r['ViewTStats']['sales_type3']; ?></td>
@@ -558,6 +620,18 @@ jQuery(document).ready(function(){
 		idx = jQuery("th", obj.parent()).index(this);
 		this.hide();
 		jQuery("td:eq(" + idx + ")", jQuery("tr", tbl)).hide();
+	});
+
+	jQuery("a.linkFrauds").fancybox({
+		'type'			:	'inline',
+		'overlayOpacity':	0.8,
+		'overlayColor'	:	'#0A0A0A',
+		'transitionIn'	:	'fade',
+		'transitionOut'	:	'fade',
+		'speedIn'		:	200, 
+		'speedOut'		:	50, 
+		'modal'			:	true,
+		'showCloseButton':	true
 	});
 });
 </script>
