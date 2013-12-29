@@ -676,12 +676,12 @@ echo $scripts_for_layout;
 				echo !empty($alerts) ? $alerts : '';
 				?>
 			</p>
-
+			<!--  
 			<hr style="margin: 6px 0px 6px 0px" />
 			<hr style="margin: 6px 0px 6px 0px" />
-
+			-->
 			<?php
-			if (!empty($excludedsites)) {
+			if (false && !empty($excludedsites)) {
 			?>
 			<p style="font-weight: bold; font-size: 14px; color: red;">
 				YOUR
