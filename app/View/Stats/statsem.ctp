@@ -314,7 +314,7 @@ if (!empty($rs)) {
 			?>
 			<div id="<?php echo $divID; ?>" style="float:left;"><?php echo $frauds; ?></div>
 			<?php
-			if ($userinfo['role'] == 0 && $bywhat == 3) {
+			if (false && $userinfo['role'] == 0 && $bywhat == 3) {
 			?>
 				<a href="<?php echo '#' . $divPopID; ?>" id="<?php echo $linkID; ?>" class="linkFrauds" style="display:none;">#</a> 
 				<div style="display:none"><div id="<?php echo $divPopID; ?>" style="width:320px;">
@@ -351,8 +351,8 @@ if (!empty($rs)) {
 						+ "/typeid:" + jQuery("#<?php echo $selID; ?>").val()
 						+ "/frauds:" + jQuery("#<?php echo $iptID; ?>").val()
 					jQuery.post(link, function(data) {
-						alert(data);
-						jQuery("#<?php echo $divID; ?>").html(link);
+						alert(data);//for debug
+						//jQuery("#<?php echo $divID; ?>").html(link);
 					});
 					jQuery.fancybox.close();
 				});
