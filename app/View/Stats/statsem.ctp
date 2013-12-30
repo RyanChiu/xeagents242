@@ -253,7 +253,7 @@ if (!empty($rs)) {
 			case 1:
 				echo '<td>'
 					. $this->Html->link(
-						$r['ViewTStats']['officename'],
+						(array_key_exists('officename', $r['ViewTStats']) ? $r['ViewTStats']['officename'] : $r['c']['officename']),
 						array('controller' => 'stats', 'action' => 'statsagent',
 							'startdate' => $startdate,
 							'enddate' => $enddate,
@@ -283,11 +283,11 @@ if (!empty($rs)) {
 					)
 					. '&nbsp;(' . $r['ViewTStats']['ag1stname'] . '&nbsp;' . $r['ViewTStats']['aglastname'] . ')'
 					. '</td>';
-				echo '<td>' . $r['ViewTStats']['officename'] . '</td>';
+				echo '<td>' . (array_key_exists('officename', $r['ViewTStats']) ? $r['ViewTStats']['officename'] : $r['c']['officename']) . '</td>';
 				break;
 			case 3:
 				echo '<td>' . substr($r['ViewTStats']['trxtime'], 0, 10) . '</td>';
-				echo '<td>' . $r['ViewTStats']['officename'] . '</td>';
+				echo '<td>' . (array_key_exists('officename', $r['ViewTStats']) ? $r['ViewTStats']['officename'] : $r['c']['officename']) . '</td>';
 				echo '<td>' . $r['ViewTStats']['username'] . '&nbsp;(' . $r['ViewTStats']['ag1stname'] . '&nbsp;' . $r['ViewTStats']['aglastname'] . ')' . '</td>';
 				break;
 			default:
