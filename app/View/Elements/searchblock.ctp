@@ -64,7 +64,7 @@ echo $this->Form->create(
 </thead>
 <tr>
 	<td>
-		<div style="float:left;width:90px;">
+		<div style="float:left;width:60px;">
 			<b>Site:</b>
 		</div>
 		<div style="float:left;margin-right:20px;">
@@ -72,7 +72,7 @@ echo $this->Form->create(
 		echo $this->Form->input('Stats.siteid',
 			array('label' => '',
 				'options' => $sites, 'type' => 'select', 'selected' => $selsite,
-				'style' => 'width:160px;',
+				'style' => 'width:190px;',
 				'onchange' => 'javascript:if (jQuery("#StatsSiteid").val() == -1) {alert("Please choose a site, or the stats will not be loaded.");return false;} else return true;'
 			)
 		);
@@ -103,11 +103,8 @@ echo $this->Form->create(
 		));
 		?>
 		</div>
-	</td>
-</tr>
-<tr>
-	<td>
-		<div style="float:left;width:90px;">
+		
+		<div style="float:left;width:60px;">
 			<b>Type:</b>
 		</div>
 		<div style="float:left;margin-right:20px;">
@@ -115,7 +112,7 @@ echo $this->Form->create(
 		echo $this->Form->input('Stats.typeid',
 			array('label' => '', 'options' => $types,
 				'type' => 'select', 'selected' => $seltype,
-				'style' => 'width:160px;',
+				'style' => 'width:110px;',
 				'div' => array('id' => 'divTypeid')
 			)
 		);
@@ -124,17 +121,18 @@ echo $this->Form->create(
 		<div id="divTypeidLoading" style="float:left;width:160px;margin-right:20px;display:none;">
 		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
 		</div>
+		
 		<div style="float:left;margin-right:20px;">
 		<?php
 		if ($userinfo['role'] == 0) {//means an administrator
 		?>
-		<div style="float:left;width:90px;">
+		<div style="float:left;width:60px;">
 			<b>Office:</b>
 		</div>
 		<div style="float:left;margin-right:20px;">
 			<input id="iptComs" type="text"
 				readonly="readonly"
-				style="width:158px;cursor:default;"
+				style="width:108px;cursor:default;"
 				<?php
 				$selcomnames = array();
 				if (empty($selcoms) || count($selcoms) == count($coms)) {
@@ -153,7 +151,7 @@ echo $this->Form->create(
 			echo $this->Form->select('Stats.companyid',
 				$coms,
 				array(
-					'style' => 'width:160px;height:90px;',
+					'style' => 'width:110px;height:90px;',
 					'multiple' => 'multiple',
 					'value' => (empty($selcoms) ? 0 : $selcoms),
 				)
@@ -227,7 +225,7 @@ echo $this->Form->create(
 			echo $this->Form->input('Stats.agentid',
 				array('label' => '',
 					'options' => $ags, 'type' => 'select',
-					'selected' => $selagent, 'style' => 'width:160px;',
+					'selected' => $selagent, 'style' => 'width:110px;',
 					'div' => array('id' => 'divAgentid')
 				)
 			);
@@ -263,24 +261,6 @@ echo $this->Form->create(
 </tr>
 <tr>
 	<td>
-		<div style="float:left;width:90px;">
-			<b>Start Date:</b>
-		</div>
-		<div style="float:left;margin-right:20px;">
-		<?php
-		echo $this->Form->input('Stats.startdate',
-			array('label' => '', 'id' => 'datepicker_start', 'style' => 'width:158px;', 'value' => $startdate));
-		?>
-		</div>
-		<div style="float:left;width:90px;">
-			<b>End Date:</b>
-		</div>
-		<div style="float:left;margin-right:20px;">
-		<?php
-		echo $this->Form->input('Stats.enddate',
-			array('label' => '', 'id' => 'datepicker_end', 'style' => 'width:158px', 'value' => $enddate));
-		?>
-		</div>
 		<div style="float:left;width:60px;">
 			<b>Period:</b>
 		</div>
@@ -298,18 +278,30 @@ echo $this->Form->create(
 		);
 		?>
 		</div>
-	</td>
-</tr>
-<tr>
-	<td>
-		<div style="float:left;width:90px;">
-			<b>&nbsp;</b>
+		<div style="float:left;width:60px;">
+			<b>Start:</b>
 		</div>
 		<div style="float:left;margin-right:20px;">
 		<?php
+		echo $this->Form->input('Stats.startdate',
+			array('label' => '', 'id' => 'datepicker_start', 'style' => 'width:108px;', 'value' => $startdate));
+		?>
+		</div>
+		<div style="float:left;width:60px;">
+			<b>End:</b>
+		</div>
+		<div style="float:left;margin-right:20px;">
+		<?php
+		echo $this->Form->input('Stats.enddate',
+			array('label' => '', 'id' => 'datepicker_end', 'style' => 'width:108px', 'value' => $enddate));
+		?>
+		</div>
+		
+		<div style="float:left;margin-left:60px;">
+		<?php
 		echo $this->Form->submit('Load Stats',
 			array(
-				'style' => 'width:160px;',
+				'style' => 'width:110px;font-weight:bold;',
 				'onclick' => 'javascript:if (jQuery("#StatsSiteid").val() == -1) {alert("Please choose a site, or the stats will not be loaded.");return false;} else return true;'
 			)
 		);
