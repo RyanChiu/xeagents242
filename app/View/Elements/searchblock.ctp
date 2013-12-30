@@ -118,8 +118,8 @@ echo $this->Form->create(
 		);
 		?>
 		</div>
-		<div id="divTypeidLoading" style="float:left;width:160px;margin-right:20px;display:none;">
-		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+		<div id="divTypeidLoading" style="float:left;width:110px;margin-right:20px;display:none;">
+		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;loading...'; ?>
 		</div>
 		
 		<div style="float:left;margin-right:20px;">
@@ -231,8 +231,8 @@ echo $this->Form->create(
 			);
 		?>
 		</div>
-		<div id="divAgentidLoading" style="float:left;width:158px;margin-right:20px;display:none;">
-		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;Loading...'; ?>
+		<div id="divAgentidLoading" style="float:left;width:108px;margin-right:20px;display:none;">
+		<?php echo $this->Html->image('iconAttention.gif') . '&nbsp;loading...'; ?>
 		</div>
 		<?php
 		}
