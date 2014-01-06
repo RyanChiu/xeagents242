@@ -7,14 +7,6 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 ?>
 <table style="float:right;border:0;width:260px;margin-top:0px;">
 	<tr>
-		<td style="text-align:center">
-			<div style="color:#fed652;font-weight:bold;font-size:16px;margin:9px 0 0 0;">
-				Register
-				<a href="#" style="font-weight:normal;font-size:12px;">(here)</a>
-			</div>
-		</td>
-	</tr>
-	<tr>
 		<td style="color:#fed652;text-align:center;font-weight:bold;font-size:16px;">
 			<div style="margin:3px 0px 6px 0px;">Log in</div>
 		</td>
@@ -77,7 +69,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 		</td>
 	</tr>
 	<tr>
-		<td style="text-align:left;padding:0;color:white;">
+		<td style="text-align:left;padding:8px 0 0 0;color:white;">
 			Need help,Forget password:<br/><a href="mailto:support@xueseros.com">support@xueseros.com</a>
 		</td>
 	</tr>

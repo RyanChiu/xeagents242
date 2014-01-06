@@ -24,7 +24,10 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 					<?php echo $this->Html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
 				<div id="divLogin" style="float:right;padding:0;width:265px;height:100%;text-align:right;padding:0;margin:0;">
-					<?php echo $content_for_layout; ?>
+					<div style="color:#fed652;font-weight:bold;font-size:16px;margin:9px 0 0 0;">
+						Register<br/>
+						<a href="#" style="font-weight:normal;font-size:12px;">(here)</a>
+					</div>
 				</div>
 			</div>
 			<!-- End Header -->
@@ -37,10 +40,10 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 					</center>
 					<div class="content-top"></div>
 					<div class="content-mid">
-						<div style="float:left;width:45%;text-align:right;">
-							&nbsp;
+						<div style="float:left;width:65%;text-align:right;">
+							<?php echo $content_for_layout; ?>
 						</div>
-						<div style="float:right;width:45%;">
+						<div style="float:right;width:35%;">
 							<?php echo $this->Html->image('main/RIGHTBEE.jpg', array('style' => 'height:90px;float:right;border:0px;margin-right:40px;')); ?>
 						</div>
 					</div>
