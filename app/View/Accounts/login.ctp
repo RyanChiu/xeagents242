@@ -1,14 +1,10 @@
-<center>
-	<b><font color="red"><?php echo $this->Session->flash('auth'); ?> </font> </b>
-	<font color="red"><?php echo $this->Session->flash(); ?> </font>
-</center>
 <?php
 echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 'action' => 'login')));
 ?>
-<table style="float:right;border:0;width:260px;margin-top:0px;">
+<table style="float:right;border:0;width:345px;margin-top:0px;">
 	<tr>
 		<td style="color:#fed652;text-align:center;font-weight:bold;font-size:16px;">
-			<div style="margin:3px 0px 6px 0px;">Log in</div>
+			<div style="margin:0px 0px 6px 0px;">Log in</div>
 		</td>
 	</tr>
 	<tr>
@@ -25,7 +21,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>
-			<div style="float:left;color:white;white;width:85px;text-align:left;">
+			<div style="float:left;color:white;width:85px;text-align:left;">
 				<b>Password:</b>
 			</div>
 			<div style="float:left;">
@@ -40,12 +36,40 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>
-			
-		</td>
-	</tr>
-	<tr>
-		<td>
-			
+			<div style="float:left;color:white;width:85px;text-align:left;"><b>Code:</b></div>
+			<div style="float:left;">
+			<?php
+			echo $this->Form->input('Account.vcode', 
+				array('label' => '', 'style' => 'width:135px;', 'div' => array('style' => 'margin:0 3px 5px 0;'))
+			);
+			?>
+			</div>
+			<div style="float:left;">
+			<script type="text/javascript">
+			function __chgVcodes() {
+				document.getElementById("imgVcodes").src =
+					"<?php echo $this->Html->url(array('controller' => 'accounts', 'action' => 'phpcaptcha')); ?>"
+					+ "?" + Math.random();
+			}
+			</script>
+			<?php
+			echo $this->Html->link(
+				$this->Html->image(array('controller' => 'accounts', 'action' => 'phpcaptcha'),
+					array(
+						'id' => 'imgVcodes',
+						'style' => 'width:105px;height:23px;margin-right:3px;', 
+						'onclick' => 'javascript:__chgVcodes();'
+					)
+				),
+				'#', 
+				array(
+					'title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)',
+					'escape' => false
+				),
+				false
+			);
+			?>
+			</div>
 		</td>
 	</tr>
 	<tr>
@@ -63,13 +87,13 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			</div>
 			<div style="float:left;width:135px;height:25px;">
 			<?php
-			echo $this->Form->submit('ENTER', array('style' => 'width:80px;'));
+			echo $this->Form->submit('ENTER', array('style' => 'width:135px;'));
 			?>
 			</div>
 		</td>
 	</tr>
 	<tr>
-		<td style="text-align:left;padding:8px 0 0 0;color:white;">
+		<td style="text-align:center;padding:8px 0 0 0;color:white;">
 			Need help,Forget password:<br/><a href="mailto:support@xueseros.com">support@xueseros.com</a>
 		</td>
 	</tr>
