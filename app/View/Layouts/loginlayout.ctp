@@ -35,10 +35,9 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 			<div id="rightcolumn">
 				<!-- Start Main Content -->
 				<div class="maincontent">
-					<center>
-						<b><font color="red"><?php echo $this->Session->flash(); ?> </font> </b>
-					</center>
-					<div class="content-top"></div>
+					<div class="content-top" style="text-align:center;font-weight:bold;color:red;">
+						<?php echo $this->Session->flash(); echo $this->Session->flash('auth'); ?>
+					</div>
 					<div class="content-mid">
 						<div style="float:left;width:65%;text-align:right;">
 							<?php echo $content_for_layout; ?>
