@@ -398,12 +398,15 @@ class AccountsController extends AppController {
 		//avoid those data which are not in types
 		$conds['startdate'] = '0000-00-00';
 		$conds['enddate'] = date('Y-m-d');
+		$rs = array();
+		/*
 		$rs = $this->Top10->find('all',
 			array(
 				'conditions' => array('flag' => 0),
 				'order' => 'sales desc'
 			)
 		);
+		*/
 		$this->set(compact('rs'));
 		$weekend = date("Y-m-d", strtotime(date('Y-m-d') . " Saturday"));
 		$weekstart = date("Y-m-d", strtotime($weekend . " - 6 days"));

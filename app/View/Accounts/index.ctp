@@ -122,6 +122,7 @@ if (!empty($notes)) {
 <table style="width:100%">
 <caption><font size="5" color="#bb2222">Best sellers this week.</font></caption>
 <tr>
+	<!--  
 	<td width="50%">
 		<table style="width:100%" style="font-size:90%;">
 		<caption style="font-style:italic;">All times</caption>
@@ -136,7 +137,7 @@ if (!empty($notes)) {
 		<?php
 		$i = 0;
 		foreach ($rs as $r) {
-			$i++;
+			$i++;continue;
 		?>
 		<tr <?php echo $i <= 3 ? 'style="font-weight:bold;"' : ''; ?>>
 			<td align="center"><?php echo $i; ?></td>
@@ -162,6 +163,7 @@ if (!empty($notes)) {
 		?>
 		</table>
 	</td>
+	-->
 	<td>
 		<div style="float: right;">
 		<?php
