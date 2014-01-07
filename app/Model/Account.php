@@ -27,16 +27,18 @@ class Account extends AppModel {
 		)
 	);
 	
+	public function beforeSave($options = array()) {
+		if (!$this->id) {
+			$passwordHasher = new SimplePasswordHasher();
+			$this->data['Account']['password'] = $passwordHasher->hash(
+				$this->data['Account']['password']
+			);
+		}
+		return true;
+	}
+	
 	var $status = array('-1' => 'unapproved', '0' => 'suspended', '1' => 'activated');
 	var $online = array('0' => 'offline', '1' => 'online');
-	
-	function hashPasswords($data) {
-		if (isset($data['Account']['password'])) {
-			$data['Account']['password'] = md5($data['Account']['password']);
-			return $data; 
-		}
-		return $data;
-	}
 	
 	function isCaseInsensitiveUnique($check) {
 		$r = $this->find('first',
