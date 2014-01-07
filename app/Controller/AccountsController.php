@@ -17,9 +17,15 @@ class AccountsController extends AppController {
 	var $components = array(
 		'Session',
 		'Auth' => array(
-			'form' => array(
-				'userModel' => 'Account',
-				'userScope' => array('Account.status' => '1')
+			'authenticate' => array(
+				'Form' => array(
+					'userModel' => 'Account',
+					'userScope' => array('Account.status' => '1'),
+					'passwordHasher' => array(
+						'className' => 'Simple',
+						'hashType' => 'md5'
+					)
+				)
 			),
 			'loginRedirect' => array('controller' => 'accounts', 'action' => 'index'),
 			'logoutRedirect' => array('controller' => 'accounts', 'action' => 'login')
@@ -523,9 +529,9 @@ class AccountsController extends AppController {
 					}
 					if ($cpinfo['Account']['status'] == -1) {
 						$this->Session->setFlash(
-								"(Your office is not approved for the moment, please contact your administrator.)",
-								'default',
-								array('class' => 'suspended-warning')
+							"(Your office is not approved for the moment, please contact your administrator.)",
+							'default',
+							array('class' => 'suspended-warning')
 						);
 						$this->request->data['Account']['password'] = '';
 						$this->Auth->logout();
@@ -533,92 +539,88 @@ class AccountsController extends AppController {
 					}
 				}
 				
-			$vcode = -1;//$this->request->data['Account']['vcode'];
-			if (true || $this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
-				/*login part*/
-				if ($this->Auth->login($userinfo)) {//means username/password/status are all correct, login succeeded
-					//$this->Auth->login();
-					/*
-					 * log login start:
-					 * before login redirect, we try to log the login time of the user. 
-					 */
-					$gonnalog = true;
-					$now = new DateTime("now", new DateTimeZone($this->__svrtz));
-					
-					if ($this->Auth->user('Account.online') != -1) {
-						$ollog = $this->OnlineLog->find('first',
-							array(
-								'conditions' => array('id' => $this->Auth->user('Account.online'))
-							)
+			$vcode = $this->request->data['Account']['vcode'];
+			if ($this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
+				if (!empty($userinfo)) {
+					if ($userinfo['Account']['status'] == 0) {
+						$this->Session->setFlash(
+							'(Your account for this site is temporarily suspended for fraud review.)',
+							'default',
+							array('class' => 'suspended-warning')
 						);
-						$logtimediff =
-							strtotime($now->format('Y-m-d H:i:s'))
-							- strtotime($ollog['OnlineLog']['intime']);
-						if ($logtimediff < $this->__timeout) $gonnalog = false;
-					}
-					
-					if ($gonnalog) {
-						$terminalcookie = $this->Session->check('terminalcookie') ?
-							$this->Session->read('terminalcookie') : null;
-						$ollog = array('OnlineLog' => array());
-						$ollog['OnlineLog'] += array('accountid' => $this->Auth->user('Account.id'));
-						$ollog['OnlineLog'] += array('intime' => $now->format('Y-m-d H:i:s'));
-						$ollog['OnlineLog'] += array('inip' => __getclientip());
-						$ollog['OnlineLog'] += array(
-							'terminalcookieid' => (($terminalcookie != null && isset($terminalcookie['id'])) ?
-								$terminalcookie['id'] : -2)
-						);
-						$ollog['OnlineLog'] += array(
-							'outtime' => date(
-								'Y-m-d H:i:s',
-								strtotime(
-									"+" . $this->__timeout . " second",
-									strtotime($now->format('Y-m-d H:i:s'))
-								)
-							)
-						);
-						$this->OnlineLog->id = null;
-						$this->OnlineLog->save($ollog);
-						$this->Account->id = $this->Auth->user('Account.id');
-						$this->Account->saveField('online', $this->OnlineLog->id);
-						$this->Account->saveField('lastlogintime', $now->format('Y-m-d H:i:s'));
-					}
-					/*
-					 * log login end
-					 */
-					$this->redirect($this->Auth->redirect());
-				} else {// means login failed
-					if (!empty($userinfo)) {
-						if ($userinfo['Account']['status'] == 0) {
-							$this->Session->setFlash(
-								'(Your account for this site is temporarily suspended for fraud review.)',
+					} else if ($userinfo['Account']['status'] == -1) {
+						$this->Session->setFlash(
+								'(Your account for this site is not approved for the moment.)',
 								'default',
 								array('class' => 'suspended-warning')
-							);
-						} else if ($userinfo['Account']['status'] == -1) {
+						);
+					} else {
+						/*try to find the new username by searching the mappings table*/
+						if ($userinfo['Account']['username'] != $this->request->data['Account']['username']) {
 							$this->Session->setFlash(
-									'(Your account for this site is not approved for the moment.)',
-									'default',
-									array('class' => 'suspended-warning')
+								sprintf('Your username has been changed from "%s" to "%s", please use the new one to login.',
+									$this->request->data['Account']['username'],
+									$userinfo['Account']['username']
+								)
 							);
+							$this->request->data['Account']['username'] = $userinfo['Account']['username'];
+						} else if ($userinfo['Account']['password'] != $this->request->data['Account']['password']){
+							$this->Session->setFlash('(incorrect password)');
 						} else {
-							/*try to find the new username by searching the mappings table*/
-							if ($userinfo['Account']['username'] != $this->request->data['Account']['username']) {
-								$this->Session->setFlash(
-									sprintf('Your username has been changed from "%s" to "%s", please use the new one to login.',
-										$this->request->data['Account']['username'],
-										$userinfo['Account']['username']
+							$this->Auth->login($userinfo);
+							
+							$gonnalog = true;
+							$now = new DateTime("now", new DateTimeZone($this->__svrtz));
+							
+							if ($this->Auth->user('Account.online') != -1) {
+								$ollog = $this->OnlineLog->find('first',
+									array(
+										'conditions' => array('id' => $this->Auth->user('Account.id'))
 									)
 								);
-								$this->request->data['Account']['username'] = $userinfo['Account']['username'];
-							} else {
-								$this->Session->setFlash('(incorrect password)' . print_r($userinfo, true));
+								if (!empty($ollog)) {
+									$logtimediff =
+										strtotime($now->format('Y-m-d H:i:s'))
+										- strtotime($ollog['OnlineLog']['intime']);
+									if ($logtimediff < $this->__timeout) $gonnalog = false;
+								}
 							}
+							
+							if ($gonnalog) {
+								$terminalcookie = $this->Session->check('terminalcookie') ?
+									$this->Session->read('terminalcookie') : null;
+								$ollog = array('OnlineLog' => array());
+								$ollog['OnlineLog'] += array('accountid' => $userinfo['Account']['id']);
+								$ollog['OnlineLog'] += array('intime' => $now->format('Y-m-d H:i:s'));
+								$ollog['OnlineLog'] += array('inip' => __getclientip());
+								$ollog['OnlineLog'] += array(
+									'terminalcookieid' => (($terminalcookie != null && isset($terminalcookie['id'])) ?
+										$terminalcookie['id'] : -2)
+								);
+								$ollog['OnlineLog'] += array(
+									'outtime' => date(
+										'Y-m-d H:i:s',
+										strtotime(
+											"+" . $this->__timeout . " second",
+											strtotime($now->format('Y-m-d H:i:s'))
+										)
+									)
+								);
+								$this->OnlineLog->id = null;
+								$this->OnlineLog->save($ollog);
+								$this->Account->id = $this->Auth->user('Account.id');
+								$this->Account->saveField('online', $this->OnlineLog->id);
+								$this->Account->saveField('lastlogintime', $now->format('Y-m-d H:i:s'));
+							}
+							/*
+							 * log login end
+							 */
+							$this->redirect($this->Auth->redirect());
 						}
-					} else {
-						if ($this->request->data['Account']['username'])
-							$this->Session->setFlash('(username: "' . $this->request->data['Account']['username'] . '" doesn\'t exist.)');
 					}
+				} else {
+					if ($this->request->data['Account']['username'])
+						$this->Session->setFlash('(username: "' . $this->request->data['Account']['username'] . '" doesn\'t exist.)');
 				}
 			} else {
 				$this->request->data['Account']['password'] = '';
