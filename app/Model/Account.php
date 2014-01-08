@@ -27,11 +27,14 @@ class Account extends AppModel {
 		)
 	);
 	
+	var $key = "cake242";
+	
 	public function beforeSave($options = array()) {
-		if (!$this->id) {
-			$passwordHasher = new SimplePasswordHasher();
-			$this->data['Account']['password'] = $passwordHasher->hash(
-				$this->data['Account']['password']
+		parent::beforeSave($options);
+		
+		if (array_key_exists('password', $this->data['Account'])) {
+			$this->data['Account']['password'] = md5(
+				$this->data['Account']['password'] . $this->key
 			);
 		}
 		return true;

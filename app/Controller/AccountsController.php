@@ -20,11 +20,7 @@ class AccountsController extends AppController {
 			'authenticate' => array(
 				'Form' => array(
 					'userModel' => 'Account',
-					'userScope' => array('Account.status' => '1'),
-					'passwordHasher' => array(
-						'className' => 'Simple',
-						'hashType' => 'md5'
-					)
+					'userScope' => array('Account.status' => '1')
 				)
 			),
 			'loginRedirect' => array('controller' => 'accounts', 'action' => 'index'),
@@ -542,7 +538,7 @@ class AccountsController extends AppController {
 					}
 				}
 				
-			$vcode = $this->request->data['Account']['vcode'];
+			$vcode = strtolower($this->request->data['Account']['vcode']);
 			if ($this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
 				if (!empty($userinfo)) {
 					if ($userinfo['Account']['status'] == 0) {
@@ -567,7 +563,7 @@ class AccountsController extends AppController {
 								)
 							);
 							$this->request->data['Account']['username'] = $userinfo['Account']['username'];
-						} else if ($userinfo['Account']['password'] != $this->request->data['Account']['password']){
+						} else if ($userinfo['Account']['password'] != md5($this->request->data['Account']['password'] . $this->Account->key)) {
 							$this->Session->setFlash('(incorrect password)');
 						} else {
 							$this->Auth->login($userinfo);
