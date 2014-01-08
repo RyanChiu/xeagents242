@@ -619,7 +619,7 @@ echo $scripts_for_layout;
 		<div id="footer">
 			<div style="float:left;">
 				<font size="1" color="white">
-				<b>XuesEros, RPG Companies INC 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
+				<b>XuesEros, 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
 				</font>
 			</div>
 			<div style="float:right;">

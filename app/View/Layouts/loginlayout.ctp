@@ -57,7 +57,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 		<div id="footer">
 			<div style="float:left;">
 				<font size="1" color="white">
-				<b>XuesEros, RPG Companies INC 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
+				<b>XuesEros, 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
 				</font>
 			</div>
 			<div style="float:right;">
