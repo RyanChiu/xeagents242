@@ -26,7 +26,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 				<div id="divLogin" style="float:right;padding:0;width:265px;height:100%;text-align:right;padding:0;margin:0;">
 					<div style="color:#fed652;font-weight:bold;font-size:16px;margin:9px 0 0 0;">
 						Register<br/>
-						<a href="#" style="font-weight:normal;font-size:12px;">(here)</a>
+						<a href="/xueserosreg/MerchantRegistration.php" style="font-weight:normal;font-size:12px;">(here)</a>
 					</div>
 				</div>
 			</div>
