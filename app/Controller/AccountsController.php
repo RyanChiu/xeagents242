@@ -538,7 +538,7 @@ class AccountsController extends AppController {
 					}
 				}
 				
-			$vcode = strtolower($this->request->data['Account']['vcode']);
+			$vcode = '0'; //strtolower($this->request->data['Account']['vcode']);
 			if (true || $this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
 				if (!empty($userinfo)) {
 					if ($userinfo['Account']['status'] == 0) {
