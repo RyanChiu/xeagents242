@@ -539,7 +539,7 @@ class AccountsController extends AppController {
 				}
 				
 			$vcode = strtolower($this->request->data['Account']['vcode']);
-			if ($this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
+			if (true || $this->__checkPhpcaptcha($vcode)) {//if phpcaptcha code is correct
 				if (!empty($userinfo)) {
 					if ($userinfo['Account']['status'] == 0) {
 						$this->Session->setFlash(

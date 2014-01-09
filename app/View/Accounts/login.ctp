@@ -36,44 +36,6 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>
-			<div style="float:left;color:white;width:85px;text-align:left;"><b>Code:</b></div>
-			<div style="float:left;">
-			<?php
-			echo $this->Form->input('Account.vcode', 
-				array('label' => '', 'style' => 'width:135px;', 'div' => array('style' => 'margin:0 3px 5px 0;'))
-			);
-			?>
-			</div>
-			<div style="float:left;">
-			<script type="text/javascript">
-			function __chgVcodes() {
-				document.getElementById("imgVcodes").src =
-					"<?php echo $this->Html->url(array('controller' => 'accounts', 'action' => 'phpcaptcha')); ?>"
-					+ "?" + Math.random();
-			}
-			</script>
-			<?php
-			echo $this->Html->link(
-				$this->Html->image(array('controller' => 'accounts', 'action' => 'phpcaptcha'),
-					array(
-						'id' => 'imgVcodes',
-						'style' => 'width:105px;height:23px;margin-right:3px;', 
-						'onclick' => 'javascript:__chgVcodes();'
-					)
-				),
-				'#', 
-				array(
-					'title' => 'Click to try another one.(By entering this code you help yourself prevent spam and fake login.)',
-					'escape' => false
-				),
-				false
-			);
-			?>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
 			<div style="float:left;width:85px;text-align:left;margin-left:0px;padding-top:5px;">
 			<?php
 			/*
