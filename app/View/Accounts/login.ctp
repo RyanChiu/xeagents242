@@ -29,29 +29,14 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			echo $this->Form->input('Account.password', array('label' => '', 'style' => 'width:135px;', 'type' => 'password'));
 			?>
 			</div>
+			<div style="float:left;margin-left:6px;">
+			<?php
+			echo $this->Form->submit('ENTER', array('style' => 'width:75px;'));
+			?>
+			</div>
 			<script type="text/javascript">
 			jQuery("#AccountUsername").focus();
 			</script>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div style="float:left;width:85px;text-align:left;margin-left:0px;padding-top:5px;">
-			<?php
-			/*
-			echo $this->Html->link(
-				'(Forget pwd?)',
-				array('controller' => 'accounts', 'action' => 'forgotpwd'),
-				array('style' => 'font-size:11px;font-weight:bold;'), false
-			);
-			*/
-			?>
-			</div>
-			<div style="float:left;width:135px;height:25px;">
-			<?php
-			echo $this->Form->submit('ENTER', array('style' => 'width:135px;'));
-			?>
-			</div>
 		</td>
 	</tr>
 	<tr>
