@@ -120,7 +120,7 @@ if (!empty($notes)) {
 <!-- show the top selling list -->
 <br/>
 <table style="width:100%">
-<caption><font size="5" color="#bb2222">Best sellers this week.</font></caption>
+<!-- <caption><font size="5" color="#bb2222">Best sellers this week.</font></caption> -->
 <tr>
 	<!--  
 	<td width="50%">
@@ -164,6 +164,7 @@ if (!empty($notes)) {
 		</table>
 	</td>
 	-->
+	<!--  
 	<td>
 		<div style="float: right;">
 		<?php
@@ -217,6 +218,7 @@ if (!empty($notes)) {
 		?>
 		</table>
 	</td>
+	-->
 </tr>
 </table>
 
