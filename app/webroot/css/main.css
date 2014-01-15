@@ -117,6 +117,16 @@ img.float {
 	min-height: 200px;
 }
 
+#rightcolumn-login {
+	border-top: 0;
+	border-bottom: 1px solid #5c5c5c;
+	margin: 0px 0px 0px 0px;
+	display: inline; /* IE Hack */
+	width: 953px; /**/
+	float: left;
+	min-height: 200px;
+}
+
 * html #rightcolumn {
 	height: 200px
 } /* IE Min-Height Hack */

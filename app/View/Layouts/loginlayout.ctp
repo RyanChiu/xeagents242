@@ -32,7 +32,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 			</div>
 			<!-- End Header -->
 			<!-- Start Right Column -->
-			<div id="rightcolumn">
+			<div id="rightcolumn-login">
 				<!-- Start Main Content -->
 				<div class="maincontent">
 					<div class="content-top" style="text-align:center;font-weight:bold;color:red;">
