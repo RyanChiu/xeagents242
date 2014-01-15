@@ -131,7 +131,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>OFFICE</font></span>',
+						echo $this->Html->link('<span><font>BRANCHES</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstcompanies', 'id' => -1),
 							array('rel' => 'dropmenu_admin_company', 'escape' => false),
 							false
@@ -197,7 +197,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>NEW MEMBERS</font></span>',
+						echo $this->Html->link('<span><font>NEW AGENTS</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstnewmembers'),
 							array('escape' => false), 
 							false);
@@ -220,7 +220,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>LINKS</font></span>',
+						echo $this->Html->link('<span><font>LINK-CODES</font></span>',
 							array('controller' => 'links', 'action' => 'lstlinks'),
 							array('rel' => ($role == 0 ? 'dropmenu_links' : ''), 'escape' => false),
 							false
@@ -372,7 +372,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php 
-						echo $this->Html->link('<span><font>HOW TO SELL</font></span>',
+						echo $this->Html->link('<span><font size="1">INSTRUCTIONS</font></span>',
 							"#",
 							array('rel' => 'dropmenu_toolbox_admin', 'escape' => false),
 							false
@@ -390,7 +390,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php 
-						echo $this->Html->link('<span><font>HOW TO SELL</font></span>',
+						echo $this->Html->link('<span><font size="1">INSTRUCTIONS</font></span>',
 							"#",
 							array('rel' => 'dropmenu_toolbox_normal', 'escape' => false),
 							false
@@ -402,7 +402,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>LOGOUT</font></span>',
+						echo $this->Html->link('<span><font size="1">SIGN OUT</font></span>',
 							array('controller' => 'accounts', 'action' => 'logout'),
 							array('escape' => false), 
 							false
@@ -458,7 +458,7 @@ echo $scripts_for_layout;
 				<div id="dropmenu_admin_company" class="dropmenudiv_e"
 					style="width: 135px;">
 					<?php
-					echo $this->Html->link('<font><b>Manage Office</b></font>',
+					echo $this->Html->link('<font><b>Manage Branches</b></font>',
 						array('controller' => 'accounts', 'action' => 'lstcompanies', 'id' => -1),
 						array('escape' => false), 
 						false
