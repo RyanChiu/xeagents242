@@ -54,3 +54,15 @@ table th a:hover {
 tfoot th, tfoot td {
 	font-size: 85%;
 }
+
+table td a:link {
+	color: yellow;
+}
+
+table td a:visited {
+	color: yellow;
+}
+
+table td a:hover {
+	color: yellow;
+}
