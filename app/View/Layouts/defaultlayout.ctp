@@ -63,7 +63,7 @@ echo $scripts_for_layout;
 			<div class="header">
 				<div style="float:left;width:100%;padding:0px 0px 0px 6px;">
 					<p>&nbsp;</p>
-					<?php echo $this->Html->image('main/LEFTTOPLOGO.jpg', array('style' => 'height:auto; border: 0px;')); ?>
+					<?php echo $this->Html->image('main/LEFTTOPLOGO.png', array('style' => 'height:auto; border: 0px;')); ?>
 				</div>
 				<div style="float: right; padding: 0px 0px 0px 0px;">
 					<p>&nbsp;</p>
@@ -578,13 +578,13 @@ echo $scripts_for_layout;
 						<div
 							style="float: right; text-align: right; padding: 6px 20px 0px 0px;">
 							<input type="text" value="" id="iptClock"
-								style="width: 240px; text-align: right; border: 0px; background: transparent; font-family: Arial; font-weight: bold; color: #ffffff;"
+								style="width: 240px; text-align: right; border: 0px; background: transparent; font-family: Arial; font-weight: bold; color: black;"
 								readonly="readonly"
 								onmouseover="jQuery('#divTimezoneTip').slideDown();"
 								onmouseout="jQuery('#divTimezoneTip').slideUp();" />
 						</div>
 						<div
-							style="float: right; margin: 6px 6px 0px 0px; display: none; color: white;"
+							style="float: right; margin: 6px 6px 0px 0px; display: none; color: black;"
 							id="divTimezoneTip">
 							<script language="javascript">
 				        	document.write("Your timezone: " + calculate_time_zone() + "");
@@ -618,12 +618,12 @@ echo $scripts_for_layout;
 		<!-- Start Footer -->
 		<div id="footer">
 			<div style="float:left;">
-				<font size="1" color="white">
+				<font size="1" color="black">
 				<b>XuesEros, 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
 				</font>
 			</div>
 			<div style="float:right;">
-			<font size="1" color="white"><b>Copyright &copy; 2012 xueseros All
+			<font size="1" color="black"><b>Copyright &copy; 2012 xueseros All
 					Rights Reserved.&nbsp;&nbsp;</b> </font>
 			</div>
 		</div>
@@ -631,7 +631,7 @@ echo $scripts_for_layout;
 	</div>
 	
 	<div style="width:1028px;margin:0 auto;font-size:12px;text-align:center;">
-		<font color="#f7df80" style="BACKGROUND-COLOR:#000000"><strong>XE-Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="#ff0000" face="Arial Black">**</font>&nbsp; Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
+		<font color="black" style="BACKGROUND-COLOR:#ffcc00"><strong>XE-Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="black" face="Arial Black">**</font>&nbsp; Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
 	</div>
 
 	<!-- for "agent must read" -->
