@@ -95,7 +95,7 @@ if (!empty($rs)) {
     ?>
     </font>
     <br/>
-    <font style="font-size:12px;font-weight:lighter;">
+    <font style="font-size:12px;font-weight:bold;color:black;">
     <?php
     if ($this->Session->check('crumbs_stats')) {
 		$crumbs = $this->Session->read('crumbs_stats');
