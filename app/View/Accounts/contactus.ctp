@@ -8,7 +8,7 @@ $userinfo = $this->Session->read('Auth.User.Account');
 echo $this->Form->create(null, array('controller' => 'accounts', 'action' => 'contactus'));
 ?>
 <table style="width:100%" <?php echo empty($userinfo) ? 'cellspacing="5" style="border: 1px solid #dddddd;"' : ''; ?>>
-<caption  style="color: #ffa000; font-weight: bold;">Fields marked with an asterisk (*) are required.</caption>
+<caption  style="font-weight: bold;">Fields marked with an asterisk (*) are required.</caption>
 	<tr>
 		<td style="color: #ffc000;">Your Email Address:</td>
 		<td align="left">
