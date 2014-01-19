@@ -21,7 +21,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 			<div class="header">
 				<div style="float:left;padding:0;">
 					<p>&nbsp;</p>
-					<?php echo $this->Html->image('main/LEFTTOPLOGO.png', array('style' => 'height:auto; border: 0px;')); ?>
+					<?php echo $this->Html->image('main/LEFTTOPLOGO.jpg', array('style' => 'width:655px;height:auto;border:0px;')); ?>
 				</div>
 				<div id="divLogin" style="float:right;padding:0;width:265px;height:100%;text-align:right;padding:0;margin:0;">
 					<div style="color:red;font-weight:bold;font-size:16px;margin:9px 0 0 0;">
