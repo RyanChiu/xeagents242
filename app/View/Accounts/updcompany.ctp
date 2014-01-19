@@ -160,7 +160,7 @@ echo $this->Form->create(
 			$sites,
 			array(
 				'multiple' => 'checkbox',
-				'disabled' => 'true',
+				'disabled' => 'false',
 				'value' => $selsites
 			)
 		);
@@ -173,15 +173,15 @@ echo $this->Form->create(
 			</div>
 			<script type="text/javascript">
 			jQuery(":checkbox").click(
-					function () {
-						jQuery("#msgbox_nochange").show("normal");
-						return false;
-					}
+				function () {
+					jQuery("#msgbox_nochange").show("normal");
+					return false;
+				}
 			);
 			jQuery("#msgbox_nochange").click(
-					function () {
-						jQuery(this).toggle("normal");
-					}
+				function () {
+					jQuery(this).toggle("normal");
+				}
 			);
 			</script>
 		<?php	
