@@ -1541,6 +1541,9 @@ class AccountsController extends AppController {
 		
 	function lstcompanies($id = null) {
 		$this->layout = 'defaultlayout';
+		if (array_key_exists('id', $this->request->params['named'])){
+			$id = $this->request->params['named']['id'];
+		}
 		
 		/*prepare for the searching part*/
 		if (!empty($this->request->data)) {
@@ -1587,6 +1590,9 @@ class AccountsController extends AppController {
 	
 	function lstagents($id = null) {
 		$this->layout = 'defaultlayout';
+		if (array_key_exists('id', $this->request->params['named'])){
+			$id = $this->request->params['named']['id'];
+		}
 		
 		/*prepare for the searching part*/
 		if (!empty($this->request->data)) {// if there are any POST data
