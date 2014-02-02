@@ -89,6 +89,7 @@ if (($argc - 1) == 2) {
 		$rs7 = mysql_query($sql, $zconn->dblink)
 			or die ("Something wrong with: " . mysql_error());
 
+		$ch = curl_init();
 		echo "try to get into the loop of calling the creation API:\n";
 		while ($r = mysql_fetch_assoc($rs7)) {
 			$agname = $r['username'];
