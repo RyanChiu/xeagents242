@@ -197,7 +197,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>NEW AGENTS</font></span>',
+						echo $this->Html->link('<span><font>NEW MEMBERS</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstnewmembers'),
 							array('escape' => false), 
 							false);
