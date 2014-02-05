@@ -47,6 +47,9 @@ echo $this->Html->script('ckeditor/ckeditor');
 echo $this->Html->css('fancybox/jquery.fancybox-1.3.3', null, array('media' => 'screen'));
 echo $this->Html->script('fancybox/jquery.fancybox-1.3.3.pack');
 
+/*for validate*/
+echo $this->Html->script("validate/jquery.validate");
+
 /*for AJAX*/
 echo $this->Html->script('ajax/prototype');
 echo $this->Html->script('ajax/scriptaculous');

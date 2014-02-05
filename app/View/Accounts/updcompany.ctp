@@ -15,7 +15,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.officename', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.officename', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
@@ -25,44 +25,46 @@ echo $this->Form->create(
 		-->
 	</tr>
 	<tr>
-		<td>Manager's First Name : </td>
+		<td colspan="2"><h1>Personal information</h1></td>
+	</tr>
+	<tr>
+		<td>First Name : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.man1stname', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.man1stname', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
 	<tr>
-		<td>Manager's Last Name : </td>
+		<td>Middle Name : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.manlastname', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.manmidname', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Last Name : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.manlastname', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
 	<tr>
-		<td>Manager's Email : </td>
+		<td>Email : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.manemail', array('label' => '', 'style' => 'width:390px;'));
-		?>
-		</div>
-		<div style="float:left"><font color="red">*</font></div>
-		</td>
-	</tr>
-	<tr>
-		<td>Manager's Cell NO. : </td>
-		<td>
-		<div style="float:left">
-		<?php
-		echo $this->Form->input('Company.mancellphone', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.manemail', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
@@ -73,7 +75,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.username', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Account.username', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
@@ -84,7 +86,7 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.password', array('label' => '', 'style' => 'width:390px;', 'type' => 'password'));
+		echo $this->Form->input('Account.password', array('label' => '', 'style' => 'width:360px;', 'type' => 'password'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
@@ -95,18 +97,18 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Account.originalpwd', array('label' => '', 'style' => 'width:390px;', 'type' => 'password'));
+		echo $this->Form->input('Account.originalpwd', array('label' => '', 'style' => 'width:360px;', 'type' => 'password'));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
 	<tr>
-		<td>Street Name &amp; Number : </td>
+		<td>Address, street name &amp; # : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.street', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.street', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		</td>
@@ -116,17 +118,17 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.city', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.city', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		</td>
 	</tr>
 	<tr>
-		<td>State &amp; Zip : </td>
+		<td>Province &amp; Zip : </td>
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->input('Company.state', array('label' => '', 'style' => 'width:390px;'));
+		echo $this->Form->input('Company.state', array('label' => '', 'style' => 'width:360px;'));
 		?>
 		</div>
 		</td>
@@ -136,7 +138,163 @@ echo $this->Form->create(
 		<td>
 		<div style="float:left">
 		<?php
-		echo $this->Form->select('Company.country', $cts, array('style' => 'width:390px;'));
+		echo $this->Form->select('Company.country', $cts, array('style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h1>Bank wire information</h1></td>
+	</tr>
+	<tr>
+		<td>Bank Name : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankname', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Bank Address : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankaddr', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Bank City : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankcity', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Bank Province &amp; Zip code : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankprovince', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Bank Country : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->select('Company.bankcountry', $cts, array('style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>SWIFT Code : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankswift', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Account Name : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankaccountname', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Account# : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.bankaccountnum', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h1>Other information</h1></td>
+	</tr>
+	<tr>
+		<td>Number of Agents : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.agents', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Other websites you are selling now : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.otherwebs', array('label' => '', 'rows' => 3, 'cols' => 43));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>How many sales a day? </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.salesaday', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td>I will do my best to send clean sales : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->select(
+			'Company.dobestornot', 
+			array(1 => "yes", 2 => "no"), 
+			array('label' => '', 'style' => 'width:160px;', 'value' => 1)
+		);
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><h1>Your Instant Contact info &amp; questions</h1></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.immsg', array('label' => '', 'rows' => 6, 'cols' => 43));
 		?>
 		</div>
 		<div style="float:left"><font color="red">*</font></div>

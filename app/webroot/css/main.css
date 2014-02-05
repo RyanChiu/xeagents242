@@ -398,3 +398,11 @@ table thead tr th a.desc {
 #maimmenu {
 	color: red;
 }
+/*for registration form*/
+#frmReg label.error {
+	margin:0 0 0 6px;
+	padding:0;
+	width:auto;
+	display:inline;
+	color:red;
+}

@@ -261,4 +261,20 @@
 			}
 		}
 	}
+	
+	/**
+	 * @param int $len
+	 * @return string a random string of $len length
+	 */
+	function __rndStr($len = 8) {
+		$rnd='';
+		for($i=0;$i<$len;$i++) {
+			do {
+				$byte = openssl_random_pseudo_bytes(1);
+				$asc = chr(base_convert(substr(bin2hex($byte),0,2),16,10));
+			} while(!ctype_alnum($asc));
+			$rnd .= $asc;
+		}
+		return $rnd;
+	}
 ?>

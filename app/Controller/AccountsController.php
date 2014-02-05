@@ -50,7 +50,11 @@ class AccountsController extends AppController {
 		$this->Auth->authError = 'Sorry, you are not authorized to access that location.';
 		//$this->Auth->userScope = array('Account.status' => '1');
 		//$this->Auth->autoRedirect = false;
-		$this->Auth->allow('login', 'logout', 'forgotpwd', 'contactus', 'phpcaptcha', 'playPhpcaptcha', 'index', 'golink', 'go');
+		$this->Auth->allow(
+			'login', 'logout', 'forgotpwd', 
+			'contactus', 'phpcaptcha', 'playPhpcaptcha', 
+			'index', 'golink', 'go', 'regcompany'
+		);
 		
 		/*check if the user could visit some actions*/
 		$this->__handleAccess();
@@ -81,7 +85,6 @@ class AccountsController extends AppController {
 				case 'updadmin':
 				case 'addnews':
 				case 'updalerts':
-				case 'regcompany':
 				case 'lstnewmembers':
 				case 'lstcompanies':
 				case 'updtoolbox':
@@ -886,6 +889,13 @@ class AccountsController extends AppController {
 	
 	function regcompany($id = null) {
 		$this->layout = 'defaultlayout';
+		
+		$partial = (!$this->Auth->user())
+			|| (array_key_exists('self', $this->request->params['named']) && ($this->request->params['named']['self'] == 'com'));
+		$this->set(compact("partial"));
+		
+		if ($partial) $this->layout = "selfreglayout";
+		
 		if (array_key_exists('id', $this->request->params['named'])){
 			$id = $this->request->params['named']['id'];
 		}
@@ -924,6 +934,9 @@ class AccountsController extends AppController {
 			if (strlen(trim($originalpwd)) != strlen($originalpwd)) {
 				$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
 				$this->Session->setFlash('Please remove any blank in front of or at the end of your password and try again.');
+				if (!$this->Auth->user()) {
+					$this->redirect(array("controller" => "accounts", "action" => "regcompany", "self" => "com"));
+				}
 				return;
 			}
 			//if (empty($this->request->data['Account']['originalpwd']) || $this->request->data['Account']['password'] != $this->Auth->password($this->request->data['Account']['originalpwd'])) {
@@ -931,6 +944,9 @@ class AccountsController extends AppController {
 				//$this->request->data['Account']['password'] = '';
 				//$this->request->data['Account']['originalpwd'] = '';
 				$this->Session->setFlash('The passwords don\'t match to each other, please try again(and do not left it blank).');
+				if (!$this->Auth->user()) {
+					$this->redirect(array("controller" => "accounts", "action" => "regcompany", "self" => "com"));
+				}
 				return;
 			}
 			
@@ -940,6 +956,9 @@ class AccountsController extends AppController {
 			if (!$this->Account->validates() || !$this->Company->validates()) {
 				$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
 				$this->Session->setFlash('Please notice the tips below the fields.');
+				if (!$this->Auth->user()) {
+					$this->redirect(array("controller" => "accounts", "action" => "regcompany", "self" => "com"));
+				}
 				return;
 			}
 			
@@ -950,7 +969,7 @@ class AccountsController extends AppController {
 			$this->Account->create();
 			$this->request->data['Account']['username4m'] = __fillzero4m($this->request->data['Account']['username']);
 			if ($this->Account->save($this->request->data)) {//1stly, save the data into 'accounts'
-				$this->Session->setFlash('Only account added.Please contact your administrator immediately.');
+				$this->Session->setFlash('Only account added. Please contact your administrator immediately.');
 				
 				$this->request->data['Company']['id'] = $this->Account->id;
 				$this->Company->create();
@@ -987,22 +1006,26 @@ class AccountsController extends AppController {
 						"A new office '"
 							. $this->request->data['Account']['username']
 							. "' created, please check it out.",
-						"empty",
+						"You could log in as administrator and see this office in 'NEW MEMBERS'. \n'office name', 'user name' & 'password' should be changed as your need.",
 						"support@xueseros.com",
-						"newaffiliates@xueseros.com"
+						"newaccounts@xueseros.com"
 					);
 
 					/*redirect to some page*/
 					$this->Session->setFlash(
 						'Office "'
-						. $this->request->data['Account']['username']
-						. '" added.'
+						//. $this->request->data['Account']['username']
+						. '" registered. Please wait to log in till your administrator approve it, thanks.'
 						. ($exdone ? '' : '<br><i>(Site associating failed.)</i>')
 					);
-					if ($id != -1) {
-						$this->redirect(array('controller' => 'accounts', 'action' => 'lstcompanies'));
+					if ($this->Auth->user()) {
+						if ($id != -1) {
+							$this->redirect(array('controller' => 'accounts', 'action' => 'lstcompanies'));
+						} else {
+							$this->redirect(array('controller' => 'accounts', 'action' => 'regcompany'));
+						}
 					} else {
-						$this->redirect(array('controller' => 'accounts', 'action' => 'regcompany'));
+						$this->redirect(array("controller" => "accounts", "action" => "regcompany", "self" => "com"));
 					}
 				} else {
 					$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
@@ -1010,6 +1033,9 @@ class AccountsController extends AppController {
 				}
 			} else {
 				$this->request->data['Account']['password'] = $this->request->data['Account']['originalpwd'];
+			}
+			if (!$this->Auth->user()) {
+				$this->redirect(array("controller" => "accounts", "action" => "regcompany", "self" => "com"));
 			}
 		}
 	}
