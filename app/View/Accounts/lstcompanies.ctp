@@ -134,14 +134,22 @@ foreach ($rs as $r):
 	?>
 	</td>
 	<td>
+	<a class="LinkPreview" id="<?php echo "linkPreview" . $i; ?>" href="<?php echo ("#preview" . $i); ?>">
+	<?php echo $this->Html->image("iconPreview.png", array("style" => "width:18px;height:18px;"))?>
+	</a>
+	<div style="display:none">
+		<div id="<?php echo ("preview" . $i); ?>" style="width:640px;">Loading...</div>
+	</div>
+	<script type="text/javascript">
+	jQuery("<?php echo "#linkPreview" . $i; ?>").click(function (){
+		var link = "<?php echo $this->Html->url(array('controller' => 'accounts', 'action' => 'showcompany', 'id' => $r['ViewCompany']['companyid'])); ?>";
+		jQuery.post(link, function(data) {
+			jQuery("<?php echo ("#preview" . $i); ?>").html(data);
+		});
+	});
+	</script>
 	<?php
-	/*
-	echo $this->Html->link(
-		$r['ViewCompany']['officename'],
-		array('controller' => 'accounts', 'action' => 'lstagents', 'id' => $r['ViewCompany']['companyid']),
-		array('title' => 'Click to the agents.')
-	);
-	*/
+	echo '&nbsp;';
 	echo $r['ViewCompany']['officename'];
 	?>
 	</td>
@@ -187,6 +195,16 @@ $i++;
 endforeach;
 ?>
 </table>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("a.LinkPreview").fancybox({
+		'type': 'inline',
+		'overlayOpacity': 0.6,
+		'overlayColor': '#0A0A0A'
+	});
+});
+</script>
 
 <div style="margin-top:3px;">
 <font color="green">With selected :&nbsp;</font>

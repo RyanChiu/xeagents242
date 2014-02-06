@@ -645,7 +645,7 @@ echo $scripts_for_layout;
 		<a id="attentions_link" href="#attentions_for_agents">show attentions</a>
 	</div>
 	<div style="display: none">
-		<div id="attentions_for_agents" style="width: 800px;">
+		<div id="attentions_for_agents" style="width:800px;">
 		<!--  
 		<p class="p-blink" style="font:italic bolder 24px/100% Georgia;color:red;margin:0px 0px 6px 0px;">
 		ATTENTION, EVERYONES: 

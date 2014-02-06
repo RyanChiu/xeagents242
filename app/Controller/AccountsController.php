@@ -103,6 +103,7 @@ class AccountsController extends AppController {
 						$this->__accessDenied();
 						return;	
 					}
+				case 'showcompany':
 				case 'updcompany':
 					if (count($this->request->params['named']) == 1 
 						&& $this->request->params['named']['id'] == $this->Auth->user('Account.id')) {
@@ -120,6 +121,7 @@ class AccountsController extends AppController {
 				case 'updalerts':
 				case 'regcompany':
 				case 'regagent':
+				case 'showcompany':
 				case 'updcompany':
 				case 'rptpayouts':
 				case 'lstnewmembers':
@@ -1873,6 +1875,24 @@ class AccountsController extends AppController {
 		$this->set('rs',
 			$this->paginate('ViewOnlineLog')
 		);
+	}
+	
+	function showcompany($id = null) {
+		$this->layout = "emptylayout";
+		if (array_key_exists('id', $this->request->params['named'])){
+			$id = $this->request->params['named']['id'];
+		}
+		$rs = $this->ViewCompany->find(
+			"first",
+			array(
+				'conditions' => array(
+					'companyid' => $id
+				)
+			)	
+		);
+		$cts = $this->Country->find('list', array('fields' => array('Country.abbr', 'Country.fullname')));
+		$this->set('cts', $cts);
+		$this->set(compact("rs"));
 	}
 	
 	function activatem() {
