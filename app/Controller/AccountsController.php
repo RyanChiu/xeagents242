@@ -1015,9 +1015,9 @@ class AccountsController extends AppController {
 
 					/*redirect to some page*/
 					$this->Session->setFlash(
-						'Office "'
-						//. $this->request->data['Account']['username']
-						. '" registered. Please wait to log in till your administrator approve it, thanks.'
+						'Office '
+						//. '"' . $this->request->data['Account']['username'] . '"'
+						. ' registered. Please wait to log in till your administrator approve it, thanks.'
 						. ($exdone ? '' : '<br><i>(Site associating failed.)</i>')
 					);
 					if ($this->Auth->user()) {
