@@ -89,7 +89,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>HOME</font></span>',
+						echo $this->Html->link('<span><font size="1">HOME</font></span>',
 							array('controller' => 'accounts', 'action' => 'index'),
 							array('escape' => false), 
 							false
@@ -111,7 +111,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>NEWS</font></span>',
+						echo $this->Html->link('<span><font size="1">NEWS</font></span>',
 							array('controller' => 'accounts', 'action' => 'addnews'),
 							array('rel' => 'dropmenu_admin_news', 'escape' => false),
 							false
@@ -134,7 +134,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>BRANCHES</font></span>',
+						echo $this->Html->link('<span><font size="1">BRANCHES</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstcompanies', 'id' => -1),
 							array('rel' => 'dropmenu_admin_company', 'escape' => false),
 							false
@@ -156,7 +156,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>AGENT</font></span>',
+						echo $this->Html->link('<span><font size="1">AGENT</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstagents', 'id' => -1),
 							array('rel' => 'dropmenu_admin_agent', 'escape' => false),
 							false
@@ -180,7 +180,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>AGENT</font></span>',
+						echo $this->Html->link('<span><font size="1">AGENT</font></span>',
 							array('controller' => 'accounts', 'action' => 'lstagents', 'id' => $userinfo['id']),
 							array('rel' => 'dropmenu_com_agent', 'escape' => false),
 							false);
@@ -223,7 +223,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>LINK-CODES</font></span>',
+						echo $this->Html->link('<span><font size="1">LINK-CODES</font></span>',
 							array('controller' => 'links', 'action' => 'lstlinks'),
 							array('rel' => ($role == 0 ? 'dropmenu_links' : ''), 'escape' => false),
 							false
@@ -244,7 +244,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>STATS</font></span>',
+						echo $this->Html->link('<span><font size="1">STATS</font></span>',
 							array('controller' => 'stats', 'action' => 'statscompany', 'clear' => -2),
 							array('escape' => false), 
 							false
@@ -269,7 +269,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>LOGS</font></span>',
+						echo $this->Html->link('<span><font size="1">LOGS</font></span>',
 							"#",
 							array('rel' => 'dropmenu_logs', 'escape' => false),
 							false
@@ -291,7 +291,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>GET HELP</font></span>',
+						echo $this->Html->link('<span><font size="1">GET HELP</font></span>',
 							array('controller' => 'accounts', 'action' => 'contactus'),
 							array('escape' => false), 
 							false
@@ -312,7 +312,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>PROFILE</font></span>',
+						echo $this->Html->link('<span><font size="1">PROFILE</font></span>',
 							array('controller' => 'accounts', 'action' => 'updadmin'),
 							array('escape' => false), 
 							false
@@ -333,7 +333,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>PROFILE</font></span>',
+						echo $this->Html->link('<span><font size="1">PROFILE</font></span>',
 							array('controller' => 'accounts', 'action' => 'updcompany', 'id' => $userinfo['id']),
 							array('escape' => false), 
 							false
@@ -354,7 +354,7 @@ echo $scripts_for_layout;
 						?>
 						<li>
 						<?php
-						echo $this->Html->link('<span><font>PROFILE</font></span>',
+						echo $this->Html->link('<span><font size="1">PROFILE</font></span>',
 							array('controller' => 'accounts', 'action' => 'updagent', 'id' => $userinfo['id']),
 							array('escape' => false), 
 							false
