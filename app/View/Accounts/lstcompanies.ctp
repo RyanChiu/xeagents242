@@ -150,7 +150,7 @@ foreach ($rs as $r):
 	</script>
 	<?php
 	echo '&nbsp;';
-	echo $r['ViewCompany']['officename'];
+	echo $r['ViewCompany']['officename'] . "(" . $r['ViewCompany']['man1stname'] . ")";
 	?>
 	</td>
 	<td align="center">
