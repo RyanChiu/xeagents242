@@ -1003,14 +1003,21 @@ class AccountsController extends AppController {
 						$exdone = true;
 					}
 					
-					/*send out an email to inform that a new agent created*/
+					/*send out an email to inform that a new company created*/
 					$this->__sendemail(
 						"A new office '"
 							. $this->request->data['Account']['username']
 							. "' created, please check it out.",
-						"You could log in as administrator and see this office in 'NEW MEMBERS'. \n'office name', 'user name' & 'password' should be changed as your need.",
+						"You have a new office pending approval please see new members folder.",
 						"support@xueseros.com",
 						"newaccounts@xueseros.com"
+					);
+					/*send out an email to inform the new registered office*/
+					$this->__sendemail(
+						"Welcome to xueseros.com",
+						"Welcome to xueseros.com. Your account is pending approval. Please allow up to 48 hours for at which time we will provide you log in and full access to our program.",
+						"support@xueseros.com",
+						$this->request->data['Company']['manemail']
 					);
 
 					/*redirect to some page*/
