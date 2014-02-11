@@ -1920,7 +1920,7 @@ class AccountsController extends AppController {
 		if ($ids == null || $status == -1 || $from == -1) {
 			$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
 		}
-		if ($status > 1 || $status < -1) {
+		if ($status > 1 || $status < -2) {
 			$this->redirect(array('controller' => 'accounts', 'action' => 'index'));
 		}
 		$action = 'lstcompanies';

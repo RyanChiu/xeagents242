@@ -58,6 +58,8 @@ function __setActSusLink() {
 		document.getElementById("linkActivateSelected_").href + "/ids:" + ids + "/status:1/from:0";
 	document.getElementById("linkSuspendSelected").href =
 		document.getElementById("linkSuspendSelected_").href + "/ids:" + ids + "/status:0/from:0";
+	document.getElementById("linkRemoveSelected").href =
+		document.getElementById("linkRemoveSelected_").href + "/ids:" + ids + "/status:-2/from:0";
 }
 function __setCurSelectedToBeInformed() {
 	var checkboxes;
@@ -187,6 +189,12 @@ foreach ($rs as $r):
 		array('title' => 'Click to suspend the user.', 'escape' => false),
 		"Are you sure?"
 	);
+	echo $this->Html->link(
+		$this->Html->image('iconTrash.png', array('border' => 0, 'width' => 20, 'height' => 20)) . '&nbsp;',
+		array('controller' => 'accounts', 'action' => 'activatem', 'ids' => $r['ViewCompany']['companyid'], 'status' => -2, 'from' => 0),
+		array('title' => 'Click to suspend the user.', 'escape' => false),
+		"Are you sure to remove this one?"
+	);
 	?>
 	</td>
 </tr>
@@ -232,6 +240,18 @@ echo $this->Html->link(
 	'',
 	array('controller' => 'accounts', 'action' => 'activatem'),
 	array('id' => 'linkSuspendSelected_')
+);
+/*remove selected*/
+echo $this->Html->link(
+	$this->Html->image('iconTrash.png', array('border' => 0, 'width' => 20, 'height' => 20)) . '&nbsp;&nbsp;',
+	array('controller' => 'accounts', 'action' => 'activatem'),
+	array('id' => 'linkRemoveSelected', 'title' => 'Click to remove the selected users.', 'escape' => false),
+	"Are you sure to remove them?"
+);
+echo $this->Html->link(
+	'',
+	array('controller' => 'accounts', 'action' => 'activatem'),
+	array('id' => 'linkRemoveSelected_')
 );
 /*inform selected --*/
 /*undim this block to function it
