@@ -1584,10 +1584,11 @@ class AccountsController extends AppController {
 		if (!empty($this->request->data)) {
 			$searchfields = $this->request->data['ViewCompany'];
 			if (strlen($searchfields['username']) == 0 && empty($searchfields['username'])) {
-				$conditions = array('1' => '1');
+				$conditions = array('status >=' => '-1');
 			} else {
 				$conditions = array(
-					'username like' => ('%' . $searchfields['username'] . '%')
+					'username like' => ('%' . $searchfields['username'] . '%'),
+					'status >=' => '-1'
 				);
 			}
 		} else {
@@ -1595,13 +1596,13 @@ class AccountsController extends AppController {
 				if ($this->Session->check('conditions_com')) {
 					$conditions = $this->Session->read('conditions_com');
 				} else {
-					$conditions = array('1' => '1');
+					$conditions = array('status >=' => '-1');
 				}
 			} else {
 				if ($id != -1) {
-					$conditions = array('companyid' => $id);
+					$conditions = array('companyid' => $id, 'status >=' => '-1');
 				} else {//"-1" is specially for the administrator
-					$conditions = array('1' => '1');
+					$conditions = array('status >=' => '-1');
 				}
 			}
 		}
