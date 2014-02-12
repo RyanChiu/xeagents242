@@ -1010,7 +1010,7 @@ class AccountsController extends AppController {
 							. "' created, please check it out.",
 						"You have a new office pending approval please see new members folder.",
 						"support@xueseros.com",
-						"newaccounts@xueseros.com"
+						array("newaccounts@xueseros.com", "SAMICOLE111@AOL.COM")
 					);
 					/*send out an email to inform the new registered office*/
 					$this->__sendemail(
