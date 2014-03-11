@@ -2022,7 +2022,7 @@ class AccountsController extends AppController {
 				/*
 				$mailto = ''
 					//. strtolower($r['ViewAgent']['officename']) . '_qa@cleanchattersinc.com';
-					. 'admin@PayDirtDollars.com';
+					. 'SUPPORT@XUESEROS.COM';
 				if ($this->__sendemail(
 						$subject, $content,
 						'SUPPORT@XUESEROS.COM',
