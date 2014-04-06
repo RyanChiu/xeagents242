@@ -1,7 +1,7 @@
 <?php
 echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 'action' => 'login')));
 ?>
-<table style="float:right;border:0;width:345px;margin-top:0px;">
+<table style="border:0;width:100%;margin-top:0px;">
 	<tr>
 		<td style="color:red;text-align:center;font-weight:bold;font-size:16px;">
 			<div style="margin:0px 0px 6px 0px;">Log in</div>
@@ -9,7 +9,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td align="left">
-			<div style="float:left;color:black;width:85px;text-align:left;">
+			<div style="float:left;color:black;width:85px;text-align:left;margin-left:130px;">
 				<b>Username:</b>
 			</div>
 			<div style="float:left;">
@@ -21,7 +21,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td>
-			<div style="float:left;color:black;width:85px;text-align:left;">
+			<div style="float:left;color:black;width:85px;text-align:left;margin-left:130px;">
 				<b>Password:</b>
 			</div>
 			<div style="float:left;">
@@ -44,16 +44,22 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 			Need help,Forget password:<br/><a href="mailto:support@xueseros.com">support@xueseros.com</a>
 		</td>
 	</tr>
+	<tr>
+		<td style="text-align:center;">
+			<a href="laurie.rpgcash@yahoo.com">laurie.rpgcash@yahoo.com</a>  
+		</td>
+	</tr>
 </table>
 <?php
 echo $this->Form->end();
 ?>
-
+<table style="width:100%;border:0;">
+<tr><td style="text-align:left;">
 <div style="margin: 0px 15px 0px 15px">
-	<?php
-	echo $this->element('frauddefblock');
-	?>
+	
 </div>
+</td></tr>
+</table>
 
 <script type="text/javascript">
 for (var i = 0; i < 10; i++) {

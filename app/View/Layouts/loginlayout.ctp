@@ -39,15 +39,26 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 						<?php echo $this->Session->flash(); echo $this->Session->flash('auth'); ?>
 					</div>
 					<div class="content-mid">
-						<div style="float:left;width:65%;text-align:right;">
+						<div style="float:left;width:20%;">
+							<?php echo $this->Html->image('main/leftmg.png', array('style' => 'height:180px;float:left;margin-left:20px;margin-top:-50px;border:0px;')); ?>
+						</div>
+						<div style="float:left;width:60%;">
 							<?php echo $content_for_layout; ?>
 						</div>
-						<div style="float:right;width:35%;">
+						<div style="float:right;width:20%;">
 							<?php echo $this->Html->image('main/RIGHTBEE.jpg', array('style' => 'height:90px;float:right;border:0px;margin-right:40px;')); ?>
 						</div>
 					</div>
-					<div class="content-bottom"></div>
+					<div class="content-bottom">
+					</div>
 				</div>
+				<table style="width:100%;">
+					<tr><td>
+						<div style="margin:0 50px 10px 50px;padding:6px;border:solid 1px black;color:black;">
+							<?php echo $this->element('frauddefblock');	?>
+						</div>
+					</td></tr>
+				</table>
 				<!-- End Main Content -->
 			</div>
 			<!-- End Right Column -->
