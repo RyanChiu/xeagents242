@@ -40,7 +40,9 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 					</div>
 					<div class="content-mid">
 						<div style="float:left;width:20%;">
+							<a href="mailto:laurie.rpgcash@yahoo.com" title="laurie.rpgcash@yahoo.com">
 							<?php echo $this->Html->image('main/leftmg.png', array('style' => 'height:180px;float:left;margin-left:20px;margin-top:-50px;border:0px;')); ?>
+							</a>
 						</div>
 						<div style="float:left;width:60%;">
 							<?php echo $content_for_layout; ?>
@@ -68,19 +70,31 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 		<div id="footer">
 			<div style="float:left;">
 				<font size="1" color="black">
-				<b>XuesEros, 2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
+				<b>xuesEros, RPG Companies INC</b>
 				</font>
 			</div>
 			<div style="float:right;">
-			<font size="1" color="black"><b>Copyright &copy; 2012 xueseros All
-					Rights Reserved.&nbsp;&nbsp;</b> </font>
+				<font size="1" color="black">
+				<b>2333 Dean Path, Edinburgh, EH3 7DX , UK</b>
+				</font>
 			</div>
 		</div>
 		<!-- End Footer -->
 	</div>
 	
 	<div style="width:1028px;margin:0 auto;font-size:12px;text-align:center;">
-		<font color="black" style="BACKGROUND-COLOR:#ffcc00"><strong>XE-Cams:&nbsp; Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font color="black" face="Arial Black">**</font>&nbsp; Agent gets paid as soon as card is approved <font color="#ff0000" face="Arial Black">**</font> No revokes <font color="#ff0000" face="Arial Black">**</font> NO dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp; canceled sales.</strong></font>
+		<font color="black" style="BACKGROUND-COLOR: #ffcc00"><strong>XE-Cams:&nbsp;
+			Weekly Pay <font color="#ff0000">** </font>Link-1=Free Trial <font
+			color="black" face="Arial Black">**</font>&nbsp; Agent gets paid as
+			soon as card is approved <font color="#ff0000" face="Arial Black">**</font>
+			No revokes <font color="#ff0000" face="Arial Black">**</font> NO
+			dupes <font color="#ff0000" face="Arial Black">**</font> PayS&nbsp;
+			canceled sales.
+		</strong> </font>
+	</div>
+	
+	<div style="width:1028px;margin:0 auto;padding-top:12px;font-size:12px;color:black;text-align:center;">
+		<b>~'~&nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2012 xueseros All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;~'~&nbsp;&nbsp;</b>
 	</div>
 	
 </body>
