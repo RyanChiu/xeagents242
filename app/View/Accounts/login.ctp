@@ -46,6 +46,7 @@ echo $this->Form->create(null, array('url' => array('controller' => 'accounts', 
 	</tr>
 	<tr>
 		<td style="text-align:center;padding-top:8px;">
+			<font style="color:darkred;">YM:</font>
 			<a href="mailto:laurie.rpgcash@yahoo.com">laurie.rpgcash@yahoo.com</a>  
 		</td>
 	</tr>
