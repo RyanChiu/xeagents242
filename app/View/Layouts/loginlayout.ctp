@@ -56,7 +56,7 @@ echo $this->Html->script('jQuery/Datepicker/jquery-1.3.2.min');
 				</div>
 				<table style="width:100%;">
 					<tr><td>
-						<div style="margin:0 50px 10px 50px;padding:6px;border:solid 1px black;color:black;">
+						<div style="margin:0 70px 10px 50px;padding:6px;border:solid 4px black;color:black;font-weight:bold;font-size:11px;">
 							<?php echo $this->element('frauddefblock');	?>
 						</div>
 					</td></tr>
