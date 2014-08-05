@@ -62,9 +62,10 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 		where a.siteid = s.id and a.siteid = b.siteid and s.abbr = 'xcams' 
 			and a.agentid = g.id and g.companyid = m.id
 			and a.agentid = n.id and n.username = '$agent'
-		ORDER BY typeid";
+		ORDER BY typeid";//'xcams' should be changed with different site
 	$rs = mysql_query($sql, $conn->dblink);
-	$i = 0;
+	$idxstartwith = 4;//should be changed with different site
+	$i = $idxstartwith;
 	while ($r = mysql_fetch_assoc($rs)) {
 		if ($i == $ch) {
 			$typeid = $r['typeid'];
@@ -124,7 +125,7 @@ if (true || $ip == "66.180.199.11" || $ip == "127.0.0.1") {
 		}
 		$i++;
 	}
-	if ($i == 0) {
+	if ($i == $idxstartwith) {
 		error_log("no such an agent '$agent'.\n", 3, $logpath);
 		echo "no such an agent '$agent'.";
 	} else {
