@@ -77,7 +77,8 @@ class Account extends AppModel {
 			 * and the following 0~2 chars should be 0-9.
 			 * /i means that both uppercase and lowercase should be fine.
 			 */
-			return preg_match('/^[A-Z0-9]{0,4}_{0,1}[A-Z]{1,3}\d{0,4}_{0,1}\d{0,2}$/i', $value);
+			//return preg_match('/^[A-Z0-9]{0,4}_{0,1}[A-Z]{1,3}\d{0,4}_{0,1}\d{0,2}$/i', $value);
+			return preg_match('/^[A-Z0-9]{2,16}_{0,1}\d{1,4}$/i', $value);
 		}
 		return true;
 	}
