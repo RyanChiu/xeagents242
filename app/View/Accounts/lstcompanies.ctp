@@ -192,7 +192,7 @@ foreach ($rs as $r):
 	echo $this->Html->link(
 		$this->Html->image('iconTrash.png', array('border' => 0, 'width' => 20, 'height' => 20)) . '&nbsp;',
 		array('controller' => 'accounts', 'action' => 'activatem', 'ids' => $r['ViewCompany']['companyid'], 'status' => -2, 'from' => 0),
-		array('title' => 'Click to suspend the user.', 'escape' => false),
+		array('title' => 'Click to remove the user.', 'escape' => false),
 		"Are you sure to remove this one?"
 	);
 	?>
