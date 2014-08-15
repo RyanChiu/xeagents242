@@ -226,7 +226,7 @@ class LinksController extends AppController {
 						'id',
 						'username'
 					),
-					'conditions' => array('role' => 2),
+					'conditions' => array('role' => 2, 'status >=' => 0),
 					'order' => 'username4m'
 				)
 			);
@@ -243,7 +243,7 @@ class LinksController extends AppController {
 						'id',
 						'username'
 					),
-					'conditions' => array('companyid' => $this->curuser['id']),
+					'conditions' => array('companyid' => $this->curuser['id'], 'status >=' => 0),
 					'order' => 'username4m'
 				)
 			);
@@ -277,7 +277,7 @@ class LinksController extends AppController {
 						'id',
 						'username'
 					),
-					'conditions' => array('id' => $this->curuser['id'], 'role' => 2),
+					'conditions' => array('id' => $this->curuser['id'], 'role' => 2, 'status >=' => 0),
 					'order' => 'username4m'
 				)
 			);

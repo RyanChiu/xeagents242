@@ -1,5 +1,6 @@
 <?php
 App::import('Vendor', 'extrakits');
+App::import('Vendor', 'zmysqlConn');
 ?>
 <?php
 class AccountsController extends AppController {
@@ -1920,8 +1921,19 @@ class AccountsController extends AppController {
 		if ($from == 1) $action = 'lstagents';
 		if ($from == 2) $action = 'lstnewmembers';
 		
-		/*update the field "status" of table accounts*/
+		/*update the field "status" of table accounts*/$sql = "";
 		if ($this->Account->updateAll(array('status' => $status), array('id' => $ids))) {
+			$conn = new zmysqlConn();
+			if ($from == 0) {//if it's an office, change all the agents of it to the wannted status
+				$ids_str = implode(",", $ids);
+				$sql = "update 
+					accounts a, companies c, agents g
+					set a.status = $status
+					WHERE a.id = g.id
+					AND g.companyid = c.id
+					AND c.id in ($ids_str)";
+				$result = mysql_query($sql, $conn->dblink);
+			}
 			$this->Session->setFlash('The selected all have been ' . $this->Account->status[$status] . '.');
 		};
 		
