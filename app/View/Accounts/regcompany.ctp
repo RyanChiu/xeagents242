@@ -73,6 +73,17 @@ $username = __rndStr(6);
 		<div style="float:left"><font color="red">*</font></div>
 		</td>
 	</tr>
+	<tr>
+		<td>Cell Phone : </td>
+		<td>
+		<div style="float:left">
+		<?php
+		echo $this->Form->input('Company.mancellphone', array('label' => '', 'style' => 'width:360px;'));
+		?>
+		</div>
+		<div style="float:left"><font color="red">*</font></div>
+		</td>
+	</tr>
 	<tr <?php echo ($partial ? "style='display:none'" : ""); ?>>
 		<td>Username for this Office : </td>
 		<td>
@@ -387,6 +398,10 @@ echo $this->Form->end();
 			"data[Company][manemail]": {
 				required: true,
 				email: true
+			},
+			"data[Company][mancellphone]": {
+				required: true,
+				digits: true
 			},
 			"data[Company][bankname]": "required",
 			"data[Company][bankaddr]": "required",
