@@ -1060,6 +1060,7 @@ class AccountsController extends AppController {
 		$cps = $this->ViewCompany->find('list',
 			array(
 				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
 				'order' => 'username4m'
 			)
 		);
@@ -1359,6 +1360,7 @@ class AccountsController extends AppController {
 		$cps = $this->ViewCompany->find('list',
 			array(
 				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
 				'order' => 'username4m'
 			)
 		);
@@ -1700,19 +1702,12 @@ class AccountsController extends AppController {
 
 		$this->Session->write('conditions_ag', $conditions);
 		
-		$this->paginate = array(
-			'ViewAgent' => array(
-				'conditions' => $conditions,
-				'limit' => $this->__limit,
-				'order' => 'username4m'
-			)
-		);
-		
 		$coms = array();
 		if ($this->Auth->user('Account.role') == 0) {
-			$coms = $this->Company->find('list',
+			$coms = $this->ViewCompany->find('list',
 				array(
-					'fields' => array('id', 'officename'),
+					'fields' => array('companyid', 'officename'),
+					'conditions' => array('status >= 0'),
 					'order' => 'officename'
 				)
 			);
@@ -1732,6 +1727,14 @@ class AccountsController extends AppController {
 		$this->set('status', $this->Account->status);
 		$this->set('online', $this->Account->online);
 		$this->set('limit', $this->__limit);
+		
+		$this->paginate = array(
+			'ViewAgent' => array(
+				'conditions' => array('companyid' => array_keys($coms)) + $conditions,
+				'limit' => $this->__limit,
+				'order' => 'username4m'
+			)
+		);
 		$this->set('rs',
 			$this->paginate('ViewAgent')
 		);
@@ -1791,11 +1794,11 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 1) {
 			$conditions = array('id' => $this->Auth->user("Account.id"));
 		}
-		$coms = $this->Company->find('list',
+		$coms = $this->ViewCompany->find('list',
 			array(
-				'fields' => array('id', 'officename'),
+				'fields' => array('companyid', 'officename'),
 				'order' => 'officename',
-				'conditions' => $conditions 
+				'conditions' => array('status >= 0') + $conditions 
 			)
 		);
 		if (count($coms) > 1) $coms = array('0' => 'All') + $coms;
@@ -2132,11 +2135,11 @@ class AccountsController extends AppController {
 		if ($this->Auth->user('Account.role') == 1) {
 			$conditions = array('id' => $this->Auth->user('Account.id'));
 		}
-		$coms = $this->Company->find('list',
+		$coms = $this->ViewCompany->find('list',
 			array(
-				'fields' => array('id', 'officename'),
+				'fields' => array('companyid', 'officename'),
 				'order' => 'officename',
-				'conditions' => $conditions 
+				'conditions' => array('status >= 0') + $conditions 
 			)
 		);
 		if (count($coms) > 1) $coms = array('0' => 'All') + $coms;

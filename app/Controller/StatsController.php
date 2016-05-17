@@ -247,6 +247,7 @@ class StatsController extends AppController {
 			$coms = $this->ViewCompany->find('list',
 				array(
 					'fields' => array('companyid', 'officename'),
+					'conditions' => array('status >= 0'),
 					'order' => 'officename'
 				)
 			);

@@ -28,7 +28,11 @@ if ($userinfo['role'] == 1) {
 		<div style="float:left">
 		<?php
 		if ($userinfo['role'] == 0) {// means an administrator
-			echo $this->Form->select('Agent.companyid', $cps, array('style' => 'width:390px;'));
+			echo $this->Form->input('Agent.companyid',
+				array('type' => 'select', 'options' => $cps,
+					'label' => '', 'style' => 'width:390px;'
+				)
+			);
 		} else if ($userinfo['role'] == 1 ) {// means an office
 			echo $this->Form->input('Agent.companyshadow',
 				array(
