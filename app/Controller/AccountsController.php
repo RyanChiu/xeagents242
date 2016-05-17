@@ -1643,6 +1643,32 @@ class AccountsController extends AppController {
 			$id = $this->request->params['named']['id'];
 		}
 		
+		$coms = array();
+		if ($this->Auth->user('Account.role') == 0) {
+			$coms = $this->ViewCompany->find('list',
+					array(
+							'fields' => array('companyid', 'officename'),
+							'conditions' => array('status >= 0'),
+							'order' => 'officename'
+					)
+					);
+		}
+		$coms = array('0' => 'All') + $coms;
+		$this->set(compact('coms'));
+		
+		$sites = $this->Site->find('list',
+				array(
+						'fields' => array('id', 'sitename'),
+						'conditions' => array('status' => 1)
+				)
+				);
+		$sites = array('-1' => '-----------------------') + $sites;
+		$this->set(compact('sites'));
+		
+		$this->set('status', $this->Account->status);
+		$this->set('online', $this->Account->online);
+		$this->set('limit', $this->__limit);
+		
 		/*prepare for the searching part*/
 		if (!empty($this->request->data)) {// if there are any POST data
 			$conditions = array(
@@ -1707,40 +1733,15 @@ class AccountsController extends AppController {
 					$conditions = array('1' => '1');
 				}
 			}
-			
 		}
+		
+		$conditions = array('AND' => array('companyid' => array_keys($coms))) + $conditions;
 
 		$this->Session->write('conditions_ag', $conditions);
 		
-		$coms = array();
-		if ($this->Auth->user('Account.role') == 0) {
-			$coms = $this->ViewCompany->find('list',
-				array(
-					'fields' => array('companyid', 'officename'),
-					'conditions' => array('status >= 0'),
-					'order' => 'officename'
-				)
-			);
-		}
-		$coms = array('0' => 'All') + $coms;
-		$this->set(compact('coms'));
-
-		$sites = $this->Site->find('list',
-			array(
-				'fields' => array('id', 'sitename'),
-				'conditions' => array('status' => 1)
-			)
-		);
-		$sites = array('-1' => '-----------------------') + $sites;
-		$this->set(compact('sites'));
-		
-		$this->set('status', $this->Account->status);
-		$this->set('online', $this->Account->online);
-		$this->set('limit', $this->__limit);
-		
 		$this->paginate = array(
 			'ViewAgent' => array(
-				'conditions' => array('companyid' => array_keys($coms)) + $conditions,
+				'conditions' => $conditions,
 				'limit' => $this->__limit,
 				'order' => 'username4m'
 			)

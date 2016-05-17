@@ -204,6 +204,15 @@ class LinksController extends AppController {
 			$id = $this->request->params['named']['id'];
 		}
 		
+		/*find out not "removed" companies*/
+		$coms = $this->ViewCompany->find('list',
+			array(
+				'fields' => array('companyid', 'officename'),
+				'conditions' => array('status >= 0'),
+				'order' => 'officename'
+			)
+		);
+		
 		/*prepare the agents for this view from DB*/
 		/*prepare the sites for the view from DB*/
 		$ags = array();
@@ -220,13 +229,16 @@ class LinksController extends AppController {
 			)
 		);
 		if ($this->curuser['role'] == 0) {//means an administrator
-			$ags = $this->Account->find('list',
+			$ags = $this->ViewAgent->find('list',
 				array(
 					'fields' =>	array(
 						'id',
 						'username'
 					),
-					'conditions' => array('role' => 2, 'status >=' => 0),
+					'conditions' => array(
+						'status >=' => 0,
+						'AND' => array('companyid' => array_keys($coms))
+					),
 					'order' => 'username4m'
 				)
 			);
