@@ -499,6 +499,16 @@ class AccountsController extends AppController {
 			$userinfo = $this->Account->find('first',
 				array('conditions' => array('lower(username)' => strtolower($this->request->data['Account']['username'])))
 			);
+			if (empty($userinfo) || $userinfo['Account']['status'] <= 0) {
+				$this->Session->setFlash(
+					"The account doesn't exist (unapproved/suspended), please contact the admin.",
+					'default',
+					array('class' => 'suspended-warning')
+					);
+				$this->request->data['Account']['password'] = '';
+				$this->Auth->logout();
+				return;
+			}
 			
 				/*the follwing codes are just in case of "agent name changed" situation-start*/
 				if (empty($userinfo)) {
@@ -524,7 +534,7 @@ class AccountsController extends AppController {
 					);
 					if ($cpinfo['Account']['status'] == 0) {
 						$this->Session->setFlash(
-							"(Your office is suspended right now, please contact your administrator.)",
+							"Your office is suspended right now, please contact the admin.",
 							'default',
 							array('class' => 'suspended-warning')
 						);
@@ -532,9 +542,9 @@ class AccountsController extends AppController {
 						$this->Auth->logout();
 						return;
 					}
-					if ($cpinfo['Account']['status'] == -1) {
+					if ($cpinfo['Account']['status'] <= -1) {
 						$this->Session->setFlash(
-							"(Your office is not approved for the moment, please contact your administrator.)",
+							"Your office is not approved/removed for the moment, please contact the admin.",
 							'default',
 							array('class' => 'suspended-warning')
 						);
