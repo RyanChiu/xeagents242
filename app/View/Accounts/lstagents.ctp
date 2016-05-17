@@ -294,6 +294,12 @@ foreach ($rs as $r):
 		array('title' => 'Click to suspend the user.', 'escape' => false),
 		"Are you sure?"
 	);
+	echo $this->Html->link(
+		$this->Html->image('iconTrash.png', array('border' => 0, 'width' => 16, 'height' => 16)) . '&nbsp;',
+		array('controller' => 'accounts', 'action' => 'activatem', 'ids' => $r['ViewAgent']['id'], 'status' => -2, 'from' => 1),
+		array('title' => 'Click to remove the user.', 'escape' => false),
+		"Are you sure to remove this one?"
+	);
 	?>
 	</td>
 	<td align="center">

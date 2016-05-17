@@ -1646,22 +1646,22 @@ class AccountsController extends AppController {
 		$coms = array();
 		if ($this->Auth->user('Account.role') == 0) {
 			$coms = $this->ViewCompany->find('list',
-					array(
-							'fields' => array('companyid', 'officename'),
-							'conditions' => array('status >= 0'),
-							'order' => 'officename'
-					)
-					);
+				array(
+					'fields' => array('companyid', 'officename'),
+					'conditions' => array('status >= 0'),
+					'order' => 'officename'
+				)
+			);
 		}
 		$coms = array('0' => 'All') + $coms;
 		$this->set(compact('coms'));
 		
 		$sites = $this->Site->find('list',
-				array(
-						'fields' => array('id', 'sitename'),
-						'conditions' => array('status' => 1)
-				)
-				);
+			array(
+				'fields' => array('id', 'sitename'),
+				'conditions' => array('status' => 1)
+			)
+		);
 		$sites = array('-1' => '-----------------------') + $sites;
 		$this->set(compact('sites'));
 		
