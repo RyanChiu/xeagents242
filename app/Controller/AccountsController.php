@@ -1735,7 +1735,13 @@ class AccountsController extends AppController {
 			}
 		}
 		
-		$conditions = array('AND' => array('companyid' => array_keys($coms))) + $conditions;
+		$conditions = array(
+				'AND' => array(
+					'companyid' => array_keys($coms),
+					'status >=' => 0 
+				)
+			)
+			+ $conditions;
 
 		$this->Session->write('conditions_ag', $conditions);
 		
