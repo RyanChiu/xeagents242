@@ -432,7 +432,7 @@ class LinksController extends AppController {
 		$ags = $this->ViewAgent->find('list',
 			array(
 				'fields' => array('id', 'username'),
-				'conditions' => ($selcom == 0 ? array('1' => '1') : array('companyid' => $selcom)),
+				'conditions' => ($selcom == 0 ? array('companyid' => array_keys($coms)) : array('companyid' => $selcom)),
 				'order' => array('username4m')
 			)
 		);

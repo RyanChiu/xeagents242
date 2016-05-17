@@ -268,7 +268,7 @@ class StatsController extends AppController {
 				array(
 					'fields' => array('id', 'username'),
 					'conditions' => array(/*'status' => 1*/)
-						+ (empty($selcoms) || in_array('0', $selcoms) ? array('1' => '1') : array('companyid' => $selcoms)),
+						+ (empty($selcoms) || in_array('0', $selcoms) ? array('companyid' => array_keys($coms)) : array('companyid' => $selcoms)),
 					'order' => 'username4m'
 				)
 			);
