@@ -1735,11 +1735,17 @@ class AccountsController extends AppController {
 			}
 		}
 		
-		$conditions = array(
-				'AND' => array(
+		$__and = array(
+			'status >=' => 0
+		);
+		if (count($coms) > 1) {
+			$__and = array(
 					'companyid' => array_keys($coms),
-					'status >=' => 0 
-				)
+					'status >=' => 0
+			);
+		}
+		$conditions = array(
+				'AND' => $__and
 			)
 			+ $conditions;
 
