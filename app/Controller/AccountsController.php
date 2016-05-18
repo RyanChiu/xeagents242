@@ -1971,7 +1971,7 @@ class AccountsController extends AppController {
 			if ($from == 1) {
 				$sql = "
 			 		update agents
-			 		set companyid = (0 - companyid)
+			 		set companyid = (-10000 - companyid)
 			 		where id in ($ids_str)
 			 	";
 				$result = mysql_query($sql, $conn->dblink);
