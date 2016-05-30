@@ -164,7 +164,7 @@ class StatsController extends AppController {
 		*/
 		
 		$lastday = date("Y-m-d", strtotime(date('Y-m-d') . " Sunday"));
-		$lastday = date("Y-m-d", strtotime($lastday . " + 3 days"));
+		$lastday = date("Y-m-d", strtotime($lastday . " + 2 days"));
 		$periods += array(
 			date("Y-m-d", strtotime($lastday . " - 6 days")) . ',' . $lastday
 			=> 'THIS WEEK'
