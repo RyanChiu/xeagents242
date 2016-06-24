@@ -151,14 +151,14 @@ if (!empty($rs)) {
 		<th <?php echo $selsite != 7 ? '' : 'class="naClassHide"'; ?>>
 		<?php echo $this->ExPaginator->sort('ViewTStats.signups', 'Free*'); ?>
 		</th>
-		<th <?php echo in_array($selsite, array(-1, 7)) ? '' : 'class="naClassHide"'; ?>>
+		<th class="naClassHide">
 		<?php
 			echo '<font size="1">'; 
 			echo $this->ExPaginator->sort('ViewTStats.frauds', 'Frauds');
 			echo '</font>';
 		?>
 		</th>
-		<th <?php echo !in_array($selsite, array(-1, 7)) ? '' : 'class="naClassHide"'; ?>>
+		<th <?php echo in_array($selsite, array(-1, 2)) ? '' : 'class="naClassHide"'; ?>>
 		<?php
 			echo $this->ExPaginator->sort('ViewTStats.chargebacks', 'Frauds');
 		?>
