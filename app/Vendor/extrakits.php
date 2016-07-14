@@ -1,4 +1,6 @@
 <?php
+	define("OPC_CHS", "6,7");
+
 	/*
 	 * routines area
 	 */
